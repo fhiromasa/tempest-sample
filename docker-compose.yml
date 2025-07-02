@@ -1,0 +1,55 @@
+services:
+  proxy:
+    image: nginx:alpine
+    volumes:
+      - ./docker/proxy/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8080:80"
+    environment:
+      VIRTUAL_HOST: app.localhost, phpmyadmin.localhost, smtp.localhost
+
+  application:
+    image: php:8.4-fpm
+    volumes:
+      - .:/var/www/app
+    expose:
+      - 8000
+    working_dir: /var/www/app
+    entrypoint: ["php", "tempest", "serve"]
+
+  database:
+    image: mysql:lts
+    volumes:
+      - ./docker/database/volume:/var/lib/mysql
+    expose:
+      - 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: database
+
+  # phpmyadmin.localhost
+  phpmyadmin:
+    image: phpmyadmin:5.2.2-apache
+    expose:
+      - 80
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      PMA_USER: user
+      PMA_PASSWORD: password
+      PMA_ARBITRARY: 1
+
+  # smtp.localhost
+  smtp:
+    image: axllent/mailpit
+    expose:
+      - 8025
+      - 1025
+    restart: unless-stopped
+    volumes:
+      - ./docker/smtp/data:/data:rw
+    environment:
+      - MP_DATABASE=/data/mailpit.db
+      - TZ=Asia/Tokyo
