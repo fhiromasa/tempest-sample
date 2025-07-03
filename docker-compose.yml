@@ -8,14 +8,18 @@ services:
     environment:
       VIRTUAL_HOST: app.localhost, phpmyadmin.localhost, smtp.localhost
 
+  # app.localhost
   application:
-    image: php:8.4-fpm
+    build:
+      context: ./docker/application
+      dockerfile: Dockerfile
     volumes:
       - .:/var/www/app
-    expose:
-      - 8000
+    ports:
+      - 8000:80
     working_dir: /var/www/app
-    entrypoint: ["php", "tempest", "serve"]
+    environment:
+      TZ: Asia/Tokyo
 
   database:
     image: mysql:lts

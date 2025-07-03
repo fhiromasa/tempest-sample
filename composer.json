@@ -1,5 +1,6 @@
 {
     "name": "tempest/sample",
+    "version": "1.0.0",
     "require": {
         "tempest/framework": "^1.0"
     },
