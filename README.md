@@ -1,24 +1,29 @@
-<p align="center">
-  <a href="https://tempestphp.com">
-    <img src="https://raw.githubusercontent.com/tempestphp/.github/refs/heads/main/.github/tempest-logo.svg" width="100" />
-  </a>
-</p>
+# Tempest Sample
 
-<h1 align="center">Tempest scaffold</h1>
-<div align="center">
-  This repository contains the default scaffold for Tempest.
-  <br />
-  The source code for the framework itself can be found at <code><a href="https://github.com/tempestphp/tempest-framework">tempestphp/tempest-framework</a></code>.
-	<br />
-	<br />
-  <pre><div align="center">composer create-project tempest/app -s dev &lt;my-app&gt;</div></pre>
-	<br />
-	<br />
-	<sub>
-		Check out the <a href="https://tempestphp.com">documentation</a>
-		&nbsp;
-		·
-		&nbsp;
-		Join the <a href="https://tempestphp.com/discord">Discord</a> server
-  </sub>
-</p>
+This repository contains the default scaffold for Tempest.
+
+The source code for the framework itself can be found at [tempestphp/tempest-framework](https://github.com/tempestphp/tempest-framework).
+
+```sh
+composer create-project tempest/app
+```
+
+Check out the [documentation](https://tempestphp.com). · Join the [Discord](https://tempestphp.com/discord) server.
+
+# docker
+
+```sh
+docker compose up -d --build
+```
+
+## application
+
+http://app.localhost:8080
+
+## phpmyadmin
+
+http://phpmyadmin.localhost:8080
+
+## smtp
+
+http://smtp.localhost:8080
