@@ -15,8 +15,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/var/www/app
-    ports:
-      - 8000:80
+    expose:
+      - 80
     working_dir: /var/www/app
     environment:
       TZ: Asia/Tokyo
