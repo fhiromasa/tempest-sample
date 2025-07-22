@@ -41,8 +41,8 @@ services:
     environment:
       PMA_HOST: database
       PMA_PORT: 3306
-      PMA_USER: user
-      PMA_PASSWORD: password
+      PMA_USER: root
+      PMA_PASSWORD: root
       PMA_ARBITRARY: 1
 
   # smtp.localhost
