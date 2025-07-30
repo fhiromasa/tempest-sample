@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\User;
 
+use App\Models\User;
+use App\User\Store\UserStoreRquest;
 use Tempest\Http\Responses\Redirect;
 use Tempest\Router\Delete;
 use Tempest\Router\Get;
@@ -11,6 +13,7 @@ use Tempest\Router\Post;
 use Tempest\Router\Put;
 use Tempest\View\View;
 
+use function Tempest\map;
 use function Tempest\view;
 
 /**
@@ -55,8 +58,9 @@ final readonly class UserController
      * Store a newly created user
      */
     #[Post('/users')]
-    public function store(): Redirect
+    public function store(UserStoreRquest $request): Redirect
     {
+        User::create([$request->email, $request->name]);
         // Validate and store user data
         return new Redirect('/users');
     }
