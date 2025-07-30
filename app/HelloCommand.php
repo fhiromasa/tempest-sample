@@ -1,8 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
-namespace App\Commands;
+namespace App;
 
 use Tempest\Console\ConsoleCommand;
 use Tempest\Console\HasConsole;

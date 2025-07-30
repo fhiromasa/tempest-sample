@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controllers;
+namespace App;
 
 use Tempest\Router\Get;
 use Tempest\View\View;
@@ -14,6 +14,6 @@ final readonly class HomeController
     #[Get('/')]
     public function __invoke(): View
     {
-        return view('views/home.view.php');
+        return view('home.view.php');
     }
 }
