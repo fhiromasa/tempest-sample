@@ -62,8 +62,8 @@ final readonly class UserController
     }
 
     /**
-    * Display the specified user
-    */
+     * Display the specified user
+     */
     #[Get('/users/{id}')]
     public function show(string $id): View
     {
