@@ -8,8 +8,11 @@ use function Tempest\get;
 use function Tempest\uri;
 
 /** @var Tempest\Validation\Rule[]|null */
-$nameErrors = get(Session::class)->get(Session::VALIDATION_ERRORS)['name'] ?? null;
-$nameOriginal = get(Session::class)->get(Session::ORIGINAL_VALUES)['name'] ?? null;
+$firstnameErrors = get(Session::class)->get(Session::VALIDATION_ERRORS)['first_name'] ?? null;
+$firstnameOriginal = get(Session::class)->get(Session::ORIGINAL_VALUES)['first_name'] ?? null;
+
+$lastnameErrors = get(Session::class)->get(Session::VALIDATION_ERRORS)['last_name'] ?? null;
+$lastnameOriginal = get(Session::class)->get(Session::ORIGINAL_VALUES)['last_name'] ?? null;
 
 $emailErrors = get(Session::class)->get(Session::VALIDATION_ERRORS)['email'] ?? null;
 $emailOriginal = get(Session::class)->get(Session::ORIGINAL_VALUES)['email'] ?? null;
@@ -21,10 +24,18 @@ $emailOriginal = get(Session::class)->get(Session::ORIGINAL_VALUES)['email'] ?? 
         <x-form :action="uri([UserController::class, 'store'])" :method="'POST'">
 
             <div>
-                <label for="name">Name:</label>
-                <input type="text" name="name" id="name" :value="$nameOriginal" placeholder="John Doe" />
-                <div :if="$nameErrors">
-                    {{$nameErrors[0]?->message()}}
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" id="first_name" :value="$firstnameOriginal" placeholder="John" />
+                <div :if="$firstnameErrors">
+                    {{$firstnameErrors[0]?->message()}}
+                </div>
+            </div>
+
+            <div>
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" id="last_name" :value="$lastnameOriginal" placeholder="Doe" />
+                <div :if="$lastnameErrors">
+                    {{$lastnameErrors[0]?->message()}}
                 </div>
             </div>
 

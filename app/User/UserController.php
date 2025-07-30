@@ -60,7 +60,7 @@ final readonly class UserController
     #[Post('/users')]
     public function store(UserStoreRquest $request): Redirect
     {
-        User::create([$request->email, $request->name]);
+        new User($request->first_name, $request->last_name, $request->email)->save();
         // Validate and store user data
         return new Redirect('/users');
     }

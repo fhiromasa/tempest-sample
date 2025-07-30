@@ -12,7 +12,10 @@ final class UserStoreRquest implements Request
     use IsRequest;
 
     #[Length(min: 2, max: 100)]
-    public string $name;
+    public string $first_name;
+
+    #[Length(min: 2, max: 100)]
+    public string $last_name;
 
     #[Length(min: 3, max: 100), Email]
     public string $email;
