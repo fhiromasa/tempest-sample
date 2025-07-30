@@ -1,6 +1,9 @@
 <?php
+
 use App\User\UserController;
+
 use function Tempest\uri;
+
 ?>
 
 <x-base :title="'Create User'">
