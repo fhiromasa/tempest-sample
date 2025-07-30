@@ -16,6 +16,9 @@
     <x-slot name="styles"/>
 </head>
 <body>
-<x-slot/>
+    <x-header />
+    <main class="w-screen h-screen">
+        <x-slot />
+    </main>
 </body>
 </html>
