@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Commands;
 
 use Tempest\Console\ConsoleCommand;
 use Tempest\Console\HasConsole;
