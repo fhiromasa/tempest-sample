@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\User\Store;
 
 use Tempest\Http\IsRequest;

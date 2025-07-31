@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\User\UserController;
 use Tempest\Http\Session\Session;
 use Tempest\Validation\Rule;
