@@ -1,3 +1,10 @@
+<?php
+
+declare(strict_types=1);
+
+// namespace App\views;
+
+?>
 <x-base>
     <main class="w-screen h-screen overflow-hidden bg-sky-100/20">
         <div class="relative isolate px-6 lg:px-8 flex flex-col items-center justify-center h-full">

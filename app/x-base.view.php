@@ -1,3 +1,11 @@
+<?php
+
+declare(strict_types=1);
+
+// namespace App\View\Layouts;
+
+?>
+
 <html lang="en">
 <head>
     <title :if="isset($title)">{{ $title }} | Tempest</title>
@@ -15,7 +23,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <x-slot name="styles"/>
 </head>
-<body>
-<x-slot/>
+<body class="bg-gray-900 text-gray-100">
+    <main>
+        <x-slot/>
+    </main>
 </body>
 </html>
