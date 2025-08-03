@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Auth\Register;
+
+use App\Auth\Register\RegisterRequest;
+use App\Controllers\HomeController;
+use App\Models\User;
+use Tempest\Http\Responses\Redirect;
+use Tempest\Reflection\MethodReflector;
+use Tempest\Router\Get;
+use Tempest\Router\Post;
+use Tempest\View\View;
+
+use function Tempest\uri;
+use function Tempest\view;
+
+final class RegisterController
+{
+    public function __construct() {}
+
+    #[Get(uri: '/register')]
+    public function registerForm(): View
+    {
+        return view(path: 'register.view.php');
+    }
+
+    #[Post(uri: '/register')]
+    public function register(RegisterRequest $request): Redirect
+    {
+        $user = User::create(name: 'sample', email: $request->email);
+        $user->setPassword(password: $request->password);
+        $user->save();
+        return new Redirect(to: uri(action: [HomeController::class, '__invoke']));
+    }
+}
