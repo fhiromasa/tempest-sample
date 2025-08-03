@@ -30,39 +30,39 @@ final class User implements CanAuthenticate, CanAuthorize
      */
     public function setPassword(#[SensitiveParameter] string $password): self
     {
-        $this->password = password_hash($password, PASSWORD_BCRYPT);
+        $this->password = password_hash(password: $password, algo: PASSWORD_BCRYPT);
 
         return $this;
     }
 
     public function grantPermission(string|UnitEnum|Permission $permission): self
     {
-        $permission = $this->resolvePermission($permission);
+        $permission = $this->resolvePermission(permission: $permission);
 
         UserPermission::new(
             user: $this,
             permission: $permission,
         )->save();
 
-        return $this->load('userPermissions.permission');
+        return $this->load(relations: 'userPermissions.permission');
     }
 
     public function revokePermission(string|UnitEnum|Permission $permission): self
     {
-        $this->getPermission($permission)?->delete();
+        $this->getPermission(permission: $permission)?->delete();
 
-        return $this->load('userPermissions.permission');
+        return $this->load(relations: 'userPermissions.permission');
     }
 
     public function hasPermission(string|UnitEnum|Permission $permission): bool
     {
-        return $this->getPermission($permission) !== null;
+        return $this->getPermission(permission: $permission) !== null;
     }
 
     public function getPermission(string|UnitEnum|Permission $permission): ?UserPermission
     {
-        return arr($this->userPermissions)
-            ->first(fn (UserPermission $userPermission) => $userPermission->permission->matches($permission));
+        return arr(input: $this->userPermissions)
+            ->first(filter: fn (UserPermission $userPermission) => $userPermission->permission->matches($permission));
     }
 
     private function resolvePermission(string|UnitEnum|Permission $permission): Permission
@@ -72,13 +72,13 @@ final class User implements CanAuthenticate, CanAuthorize
         }
 
         $name = match (true) {
-            is_string($permission) => $permission,
+            is_string(value: $permission) => $permission,
             $permission instanceof \BackedEnum => $permission->value,
             $permission instanceof UnitEnum => $permission->name,
         };
 
-        $permission = Permission::select()->whereField('name', $name)->first();
+        $permission = Permission::select()->whereField(field: 'name', value: $name)->first();
 
-        return $permission ?? new Permission($name)->save();
+        return $permission ?? new Permission(name: $name)->save();
     }
 }

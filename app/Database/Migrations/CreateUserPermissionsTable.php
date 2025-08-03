@@ -15,14 +15,14 @@ final class CreateUserPermissionsTable implements DatabaseMigration
 
     public function up(): CreateTableStatement
     {
-        return new CreateTableStatement('user_permissions')
+        return new CreateTableStatement(tableName: 'user_permissions')
             ->primary()
-            ->belongsTo('user_permissions.user_id', 'users.id')
-            ->belongsTo('user_permissions.permission_id', 'permissions.id');
+            ->belongsTo(local: 'user_permissions.user_id', foreign: 'users.id')
+            ->belongsTo(local: 'user_permissions.permission_id', foreign: 'permissions.id');
     }
 
     public function down(): DropTableStatement
     {
-        return DropTableStatement::forModel(Permission::class);
+        return DropTableStatement::forModel(modelClass: Permission::class);
     }
 }

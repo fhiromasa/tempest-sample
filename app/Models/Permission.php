@@ -18,7 +18,7 @@ final class Permission
     public function matches(string|UnitEnum|self $match): bool
     {
         $match = match (true) {
-            is_string($match) => $match,
+            is_string(value: $match) => $match,
             $match instanceof \BackedEnum => $match->value,
             $match instanceof UnitEnum => $match->name,
             default => $match->name,

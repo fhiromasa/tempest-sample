@@ -15,13 +15,13 @@ final class CreatePermissionsTable implements DatabaseMigration
 
     public function up(): CreateTableStatement
     {
-        return new CreateTableStatement('permissions')
+        return new CreateTableStatement(tableName: 'permissions')
             ->primary()
-            ->varchar('name');
+            ->varchar(name: 'name');
     }
 
     public function down(): DropTableStatement
     {
-        return DropTableStatement::forModel(Permission::class);
+        return DropTableStatement::forModel(modelClass: Permission::class);
     }
 }

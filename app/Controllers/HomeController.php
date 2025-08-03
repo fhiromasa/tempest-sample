@@ -11,9 +11,9 @@ use function Tempest\view;
 
 final readonly class HomeController
 {
-    #[Get('/')]
+    #[Get(uri: '/')]
     public function __invoke(): View
     {
-        return view('views/home.view.php');
+        return view(path: 'views/home.view.php');
     }
 }

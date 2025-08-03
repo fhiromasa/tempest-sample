@@ -26,25 +26,25 @@ final class LoginController
     #[Get(uri: '/login')]
     public function loginForm(): View
     {
-        return view('login.view.php');
+        return view(path: 'login.view.php');
     }
 
     #[Post(uri: '/login')]
     public function login(LoginRequest $request): Response
     {
         $user = User::select()
-            ->where('email = ?', $request->email)
+            ->where(where: 'email = ?', bindings: $request->email)
             ->first();
 
         if ($user === null) {
             return new Invalid(request: $request, failingRules: ['email' => [new UserNotFound()]]);
         }
-        if (! password_verify($request->password, $user->password)) {
+        if (! password_verify(password: $request->password, hash: $user->password)) {
             return new Invalid(request: $request, failingRules: ['password' => [new PasswordMismatch()]]);
         }
 
-        $this->authenticator->login($user);
+        $this->authenticator->login(user: $user);
 
-        return new Redirect(uri([HomeController::class, '__invoke']));
+        return new Redirect(to: uri(action: [HomeController::class, '__invoke']));
     }
 }

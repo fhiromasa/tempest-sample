@@ -15,16 +15,16 @@ final class CreateUsersTable implements DatabaseMigration
 
     public function up(): CreateTableStatement
     {
-        return new CreateTableStatement('users')
+        return new CreateTableStatement(tableName: 'users')
             ->primary()
-            ->varchar('name')
-            ->varchar('email')
-            ->datetime('emailValidatedAt', nullable: true)
-            ->text('password');
+            ->varchar(name: 'name')
+            ->varchar(name: 'email')
+            ->datetime(name: 'emailValidatedAt', nullable: true)
+            ->text(name: 'password');
     }
 
     public function down(): DropTableStatement
     {
-        return DropTableStatement::forModel(User::class);
+        return DropTableStatement::forModel(modelClass: User::class);
     }
 }
