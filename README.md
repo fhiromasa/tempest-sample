@@ -16,6 +16,10 @@ Check out the [documentation](https://tempestphp.com). · Join the [Discord](htt
 docker compose up -d --build
 ```
 
+## proxy
+
+http://localhost:8080
+
 ## application
 
 http://app.localhost:8080
