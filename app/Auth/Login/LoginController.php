@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Auth\Login;
 
-use App\Home\HomeController;
+use App\Controllers\HomeController;
 use App\Models\User;
 use Tempest\Auth\Authenticator;
 use Tempest\Http\Response;
