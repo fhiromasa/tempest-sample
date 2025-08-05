@@ -8,15 +8,22 @@ use SensitiveParameter;
 use Tempest\Auth\CanAuthenticate;
 use Tempest\Auth\CanAuthorize;
 use Tempest\Database\IsDatabaseModel;
+use Tempest\Database\Table;
+use Tempest\Validation\Rules\Length;
 use UnitEnum;
 
 use function Tempest\Support\arr;
 
+#[Table('users')]
 final class User implements CanAuthenticate, CanAuthorize
 {
     use IsDatabaseModel;
 
     public string $password;
+    #[Length(min: 2, max: 100)]
+    public string $first_name;
+    #[Length(min: 2, max: 100)]
+    public string $last_name;
 
     public function __construct(
         public string $name,

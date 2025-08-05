@@ -24,8 +24,9 @@ declare(strict_types=1);
     <x-slot name="styles"/>
 </head>
 <body class="bg-gray-900 text-gray-100">
-    <main>
-        <x-slot/>
+    <x-header />
+    <main class="w-screen h-screen">
+        <x-slot />
     </main>
 </body>
 </html>
