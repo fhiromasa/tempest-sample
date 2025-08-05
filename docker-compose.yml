@@ -3,6 +3,7 @@ services:
     image: nginx:alpine
     volumes:
       - ./docker/proxy/default.conf:/etc/nginx/conf.d/default.conf
+      - ./public:/var/www/app/public
     ports:
       - "8080:80"
     environment:
@@ -16,10 +17,11 @@ services:
     volumes:
       - .:/var/www/app
     expose:
-      - 80
+      - 9000
     working_dir: /var/www/app
     environment:
       TZ: Asia/Tokyo
+    entrypoint: ["php-fpm"]
 
   database:
     image: mysql:lts
