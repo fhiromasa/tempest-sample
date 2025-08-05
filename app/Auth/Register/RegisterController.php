@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace App\Auth\Register;
 
 use App\Auth\Register\RegisterRequest;
-use App\Controllers\HomeController;
+use App\Home\HomeController;
 use App\Models\User;
 use Tempest\Http\Responses\Redirect;
-use Tempest\Reflection\MethodReflector;
 use Tempest\Router\Get;
 use Tempest\Router\Post;
 use Tempest\View\View;
