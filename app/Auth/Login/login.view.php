@@ -10,20 +10,17 @@ use Tempest\Http\Session\Session;
 use function Tempest\get;
 use function Tempest\uri;
 
-$formAction = uri([LoginController::class, 'login']);
-
-$emailOriginal = get(Session::class)->get(Session::ORIGINAL_VALUES)['email'] ?? null;
-$emailErrors = get(Session::class)->get(Session::VALIDATION_ERRORS)['email'] ?? [];
-
-$passwordOriginal = get(Session::class)->get(Session::ORIGINAL_VALUES)['password'] ?? null;
-$passwordErrors = get(Session::class)->get(Session::VALIDATION_ERRORS)['password'] ?? [];
-
 ?>
-
 <x-base title="Login">
+    <?php $formAction = uri([LoginController::class, 'login']); ?>
     <h1 class="m-4 text-lg text-center">Login</h1>
     <div class="mr-4 ml-4">
         <x-form :action="$formAction" :method="'POST'">
+            <?php
+
+            $emailOriginal = get(Session::class)->get(Session::ORIGINAL_VALUES)['email'] ?? null;
+            $emailErrors = get(Session::class)->get(Session::VALIDATION_ERRORS)['email'] ?? [];
+            ?>
 
             <div>
                 <label for="email">Email:</label>
@@ -34,7 +31,11 @@ $passwordErrors = get(Session::class)->get(Session::VALIDATION_ERRORS)['password
                     </p>
                 </div>
             </div>
+            <?php
 
+            $passwordOriginal = get(Session::class)->get(Session::ORIGINAL_VALUES)['password'] ?? null;
+            $passwordErrors = get(Session::class)->get(Session::VALIDATION_ERRORS)['password'] ?? [];
+            ?>
             <div>
                 <label for="password">Password:</label>
                 <input type="password" name="password" id="password" />
