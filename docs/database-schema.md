@@ -25,6 +25,7 @@
 - user_id: UUID (foreign key to users.id)
 - content: TEXT
 - created_at: TIMESTAMP
+- updated_at: TIMESTAMP
 
 # **password_resets** table
 
@@ -32,3 +33,5 @@
 - user_id: UUID (foreign key to users.id)
 - token: VARCHAR(255) (unique)
 - expires_at: TIMESTAMP
+- created_at: TIMESTAMP
+- updated_at: TIMESTAMP

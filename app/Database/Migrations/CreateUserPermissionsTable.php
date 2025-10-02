@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Database\Migrations;
 
-use App\Models\Permission;
 use Tempest\Database\MigratesDown;
 use Tempest\Database\MigratesUp;
 use Tempest\Database\QueryStatements\CreateTableStatement;
@@ -27,6 +26,6 @@ final class CreateUserPermissionsTable implements MigratesUp, MigratesDown
 
     public function down(): DropTableStatement
     {
-        return DropTableStatement::forModel(modelClass: Permission::class);
+        return new DropTableStatement(tableName: 'user_permissions');
     }
 }

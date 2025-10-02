@@ -11,6 +11,7 @@ use Tempest\Database\Hashed;
 use Tempest\Database\HasMany;
 use Tempest\Database\IsDatabaseModel;
 use Tempest\Database\PrimaryKey;
+use Tempest\DateTime\DateTime;
 use UnitEnum;
 
 use function Tempest\Support\arr;
@@ -20,9 +21,12 @@ final class User implements Authenticatable
     use IsDatabaseModel;
 
     public PrimaryKey $id;
+    public string $password_hash;
+    public DateTime $created_at;
+    public DateTime $updated_at;
 
     public function __construct(
-        public string $name,
+        public string $username,
         public string $email,
         #[SensitiveParameter]
         #[Hashed]
@@ -30,10 +34,13 @@ final class User implements Authenticatable
         /** @var UserPermission[] $userPermissions */
         #[HasMany(UserPermission::class)]
         public array $userPermissions = [],
-    ) {}
+    ) {
+        $this->created_at = DateTime::now();
+        $this->updated_at = DateTime::now();
+    }
 
     /**
-     * @param string $rowpassword The raw password, which will be encrypted as soon as it is set
+     * @param string $rowPassword The raw password, which will be encrypted as soon as it is set
      */
     public static function hashPassword(
         #[SensitiveParameter] string $rowPassword,
