@@ -8,7 +8,7 @@ use App\Auth\Register\RegisterController;
 use Tempest\Http\Session\Session;
 
 use function Tempest\get;
-use function Tempest\uri;
+use function Tempest\Router\uri;
 
 ?>
 

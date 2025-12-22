@@ -4,35 +4,38 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use BackedEnum;
 use SensitiveParameter;
-use Tempest\Auth\CanAuthenticate;
-use Tempest\Auth\CanAuthorize;
+use Tempest\Auth\Authentication\Authenticatable;
+use Tempest\Database\Hashed;
 use Tempest\Database\IsDatabaseModel;
+use Tempest\Database\PrimaryKey;
 use UnitEnum;
 
 use function Tempest\Support\arr;
 
-final class User implements CanAuthenticate, CanAuthorize
+final class User implements Authenticatable
 {
     use IsDatabaseModel;
 
-    public string $password;
+    public PrimaryKey $id;
 
     public function __construct(
         public string $name,
         public string $email,
+        #[SensitiveParameter]
+        #[Hashed]
+        public string $password,
         /** @var UserPermission[] $userPermissions */
         public array $userPermissions = [],
     ) {}
 
     /**
-     * @param string $password The raw password, which will be encrypted as soon as it is set
+     * @param string $rowpassword The raw password, which will be encrypted as soon as it is set
      */
-    public function setPassword(#[SensitiveParameter] string $password): self
+    public static function hashPassword(#[SensitiveParameter] string $rowPassword): string
     {
-        $this->password = password_hash(password: $password, algo: PASSWORD_BCRYPT);
-
-        return $this;
+        return password_hash(password: $rowPassword, algo: PASSWORD_BCRYPT);
     }
 
     public function grantPermission(string|UnitEnum|Permission $permission): self
@@ -73,7 +76,7 @@ final class User implements CanAuthenticate, CanAuthorize
 
         $name = match (true) {
             is_string(value: $permission) => $permission,
-            $permission instanceof \BackedEnum => $permission->value,
+            $permission instanceof BackedEnum => $permission->value,
             $permission instanceof UnitEnum => $permission->name,
         };
 
