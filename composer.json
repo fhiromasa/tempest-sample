@@ -2,12 +2,13 @@
     "name": "tempest/sample",
     "version": "1.0.0",
     "require": {
-        "tempest/framework": "^1.6"
+        "tempest/framework": "2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.2 || ^11.5.15",
         "symfony/var-dumper": "^7.2.3",
-        "carthage-software/mago": "^0.26.1"
+        "carthage-software/mago": "^0.26.1",
+        "rector/rector": "2.2.5"
     },
     "autoload": {
         "psr-4": {

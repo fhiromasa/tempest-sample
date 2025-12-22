@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use BackedEnum;
 use Tempest\Database\IsDatabaseModel;
 use UnitEnum;
 
@@ -19,7 +20,7 @@ final class Permission
     {
         $match = match (true) {
             is_string(value: $match) => $match,
-            $match instanceof \BackedEnum => $match->value,
+            $match instanceof BackedEnum => $match->value,
             $match instanceof UnitEnum => $match->name,
             default => $match->name,
         };
