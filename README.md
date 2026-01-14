@@ -18,6 +18,12 @@ Check out the [documentation](https://tempestphp.com). · Join the [Discord](htt
 - Docker Compose
 
 ```sh
+# build
+docker compose build
+
+# install dependencies
+docker compose run --rm --entrypoint "composer install" application
+
 # up (add `--build` only if needed)
 docker compose up -d
 
