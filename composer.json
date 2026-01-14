@@ -1,7 +1,18 @@
 {
     "name": "tempest/sample",
     "version": "1.0.0",
+    "description": "Sample project for tempest framework",
     "require": {
+        "php": "^8.4",
+        "ext-bcmath": "*",
+        "ext-gd": "*",
+        "ext-ftp": "*",
+        "ext-intl": "*",
+        "ext-pcntl": "*",
+        "ext-pdo_mysql": "*",
+        "ext-soap": "*",
+        "ext-Zend-OPcache": "*",
+        "ext-zip": "*",
         "tempest/framework": "2.14"
     },
     "require-dev": {
