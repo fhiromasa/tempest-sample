@@ -19,7 +19,10 @@ final class CreateUserPermissionsTable implements MigratesUp, MigratesDown
         return new CreateTableStatement(tableName: 'user_permissions')
             ->primary()
             ->belongsTo(local: 'user_permissions.user_id', foreign: 'users.id')
-            ->belongsTo(local: 'user_permissions.permission_id', foreign: 'permissions.id');
+            ->belongsTo(
+                local: 'user_permissions.permission_id',
+                foreign: 'permissions.id',
+            );
     }
 
     public function down(): DropTableStatement

@@ -7,7 +7,6 @@ namespace App\Auth\Login;
 use App\Home\HomeController;
 use App\Models\User;
 use Tempest\Auth\Authentication\Authenticator;
-// use Tempest\Auth\Authenticator;
 use Tempest\Http\Response;
 use Tempest\Http\Responses\Invalid;
 use Tempest\Http\Responses\Redirect;
@@ -38,14 +37,22 @@ final class LoginController
             ->first();
 
         if ($user === null) {
-            return new Invalid(request: $request, failingRules: ['email' => [new UserNotFound()]]);
+            return new Invalid(request: $request, failingRules: ['email' =>
+                [new UserNotFound()]]);
         }
-        if (! password_verify(password: $request->password, hash: $user->password)) {
-            return new Invalid(request: $request, failingRules: ['password' => [new PasswordMismatch()]]);
+        if (!password_verify(
+            password: $request->password,
+            hash: $user->password,
+        )) {
+            return new Invalid(request: $request, failingRules: ['password' =>
+                [new PasswordMismatch()]]);
         }
 
         $this->authenticator->authenticate(user: $user);
 
-        return new Redirect(to: uri(action: [HomeController::class, '__invoke']));
+        return new Redirect(to: uri(action: [
+            HomeController::class,
+            '__invoke',
+        ]));
     }
 }
