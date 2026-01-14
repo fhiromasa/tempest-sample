@@ -33,8 +33,9 @@ final class User implements Authenticatable
     /**
      * @param string $rowpassword The raw password, which will be encrypted as soon as it is set
      */
-    public static function hashPassword(#[SensitiveParameter] string $rowPassword): string
-    {
+    public static function hashPassword(
+        #[SensitiveParameter] string $rowPassword,
+    ): string {
         return password_hash(password: $rowPassword, algo: PASSWORD_BCRYPT);
     }
 
@@ -42,10 +43,7 @@ final class User implements Authenticatable
     {
         $permission = $this->resolvePermission(permission: $permission);
 
-        UserPermission::new(
-            user: $this,
-            permission: $permission,
-        )->save();
+        UserPermission::new(user: $this, permission: $permission)->save();
 
         return $this->load(relations: 'userPermissions.permission');
     }
@@ -65,7 +63,11 @@ final class User implements Authenticatable
     public function getPermission(string|UnitEnum|Permission $permission): ?UserPermission
     {
         return arr(input: $this->userPermissions)
-            ->first(filter: fn (UserPermission $userPermission) => $userPermission->permission->matches($permission));
+            ->first(
+                filter: static fn(UserPermission $userPermission) => $userPermission->permission->matches(
+                    $permission,
+                ),
+            );
     }
 
     private function resolvePermission(string|UnitEnum|Permission $permission): Permission
@@ -80,7 +82,9 @@ final class User implements Authenticatable
             $permission instanceof UnitEnum => $permission->name,
         };
 
-        $permission = Permission::select()->whereField(field: 'name', value: $name)->first();
+        $permission = Permission::select()
+            ->whereField(field: 'name', value: $name)
+            ->first();
 
         return $permission ?? new Permission(name: $name)->save();
     }
