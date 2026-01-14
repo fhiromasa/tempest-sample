@@ -47,8 +47,8 @@ using `carthage-software/mago`
 
 ```sh
 # format
-docker compose exec application composer mago:fmt
+docker compose exec application composer format
 
 # lint
-docker compose exec application composer mago:lint
+docker compose exec application composer lint
 ```
