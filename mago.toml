@@ -22,7 +22,6 @@ check-closure-missing-type-hints = true
 check-arrow-function-missing-type-hints = true
 
 [formatter]
-excludes = ["*.view.php"]
 print-width = 80
 
 [linter]
