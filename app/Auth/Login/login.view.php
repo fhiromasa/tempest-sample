@@ -17,6 +17,7 @@ use function Tempest\Router\uri;
     <div class="mr-4 ml-4">
         <x-form :action="$formAction" :method="'POST'">
             <?php
+
             $emailOriginal =
                 get(Session::class)->get(Session::ORIGINAL_VALUES)['email']
                 ?? null;
@@ -34,6 +35,7 @@ use function Tempest\Router\uri;
                 </div>
             </div>
             <?php
+
             $passwordOriginal =
                 get(Session::class)->get(Session::ORIGINAL_VALUES)['password']
                 ?? null;
