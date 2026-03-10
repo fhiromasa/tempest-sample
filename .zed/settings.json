@@ -1,0 +1,13 @@
+{
+  "languages": {
+    "PHP": {
+      "language_servers": ["phpactor"],
+      "formatter": {
+        "external": {
+          "command": "mago",
+          "arguments": ["fmt", "--stdin-input"]
+        }
+      }
+    }
+  }
+}

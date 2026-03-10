@@ -6,6 +6,7 @@ namespace App\Auth\Login;
 
 use App\Home\HomeController;
 use App\Models\User;
+use App\Mypage\MypageController;
 use Tempest\Auth\Authentication\Authenticator;
 use Tempest\Http\Response;
 use Tempest\Http\Responses\Invalid;
@@ -32,9 +33,7 @@ final class LoginController
     #[Post(uri: '/login')]
     public function login(LoginRequest $request): Response
     {
-        $user = User::select()
-            ->where(where: 'email = ?', bindings: $request->email)
-            ->first();
+        $user = User::select()->where('email = ?', $request->email)->first();
 
         if ($user === null) {
             return new Invalid(request: $request, failingRules: ['email' =>
@@ -48,7 +47,18 @@ final class LoginController
                 [new PasswordMismatch()]]);
         }
 
-        $this->authenticator->authenticate(user: $user);
+        $this->authenticator->authenticate(authenticatable: $user);
+
+        return new Redirect(to: uri(action: [
+            MypageController::class,
+            'index',
+        ]));
+    }
+
+    #[Get(uri: '/logout')]
+    public function logout(): Response
+    {
+        $this->authenticator->deauthenticate();
 
         return new Redirect(to: uri(action: [
             HomeController::class,

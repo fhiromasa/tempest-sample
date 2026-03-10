@@ -8,6 +8,7 @@ use BackedEnum;
 use SensitiveParameter;
 use Tempest\Auth\Authentication\Authenticatable;
 use Tempest\Database\Hashed;
+use Tempest\Database\HasMany;
 use Tempest\Database\IsDatabaseModel;
 use Tempest\Database\PrimaryKey;
 use UnitEnum;
@@ -27,6 +28,7 @@ final class User implements Authenticatable
         #[Hashed]
         public string $password,
         /** @var UserPermission[] $userPermissions */
+        #[HasMany(UserPermission::class)]
         public array $userPermissions = [],
     ) {}
 
