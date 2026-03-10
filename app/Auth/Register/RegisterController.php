@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Auth\Register;
 
-use App\Auth\Register\RegisterRequest;
 use App\Home\HomeController;
 use App\Models\User;
 use Tempest\Http\Responses\Redirect;
