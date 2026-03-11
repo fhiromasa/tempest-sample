@@ -20,6 +20,11 @@ final class MypageController
     #[Get(uri: '/mypage', middleware: [MustBeAuthenticated::class])]
     public function index(): View
     {
-        return view('mypage.view.php');
+        /** @var \App\Models\User $user */
+        $user = $this->authenticator->current();
+        return view('mypage.view.php')->data(
+            id: $user->id,
+            email: $user->email,
+        );
     }
 }
