@@ -4,7 +4,7 @@ FROM php:8.4-fpm
 COPY --from=composer:2.8 /usr/bin/composer /usr/bin/composer
 
 RUN apt-get update && apt-get install -y \
-    libzip-dev libpng-dev libjpeg-dev libfreetype6-dev  libicu-dev libxml2-dev
+    libzip-dev libpng-dev libjpeg-dev libfreetype6-dev  libicu-dev libxml2-dev unzip
 
 # install php extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \

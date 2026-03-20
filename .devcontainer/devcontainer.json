@@ -2,7 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/php-mariadb
 {
   "name": "Tempest Sample",
-  "dockerComposeFile": "docker-compose.yml",
+  "dockerComposeFile": "../docker-compose.yml",
   "service": "application",
   "workspaceFolder": "/var/www/app",
 

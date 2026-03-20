@@ -2,8 +2,8 @@ services:
   proxy:
     image: nginx:alpine
     volumes:
-      - ../docker/proxy/tempest.conf:/etc/nginx/conf.d/tempest.conf
-      - ../public:/var/www/app/public
+      - ./docker/proxy/tempest.conf:/etc/nginx/conf.d/tempest.conf
+      - ./public:/var/www/app/public
     ports:
       - "8080:80"
     environment:
@@ -12,10 +12,10 @@ services:
   # app.localhost
   application:
     build:
-      context: ../docker/application
+      context: ./docker/application
       dockerfile: Dockerfile
     volumes:
-      - ../:/var/www/app
+      - ./:/var/www/app
     expose:
       - 9000
     working_dir: /var/www/app
@@ -26,7 +26,7 @@ services:
   database:
     image: mysql:lts
     volumes:
-      - ../docker/database/volume:/var/lib/mysql
+      - ./docker/database/volume:/var/lib/mysql
     ports:
       - 3306:3306
     environment:
@@ -55,7 +55,7 @@ services:
       - 1025
     restart: unless-stopped
     volumes:
-      - ../docker/smtp/data:/data:rw
+      - ./docker/smtp/data:/data:rw
     environment:
       - MP_DATABASE=/data/mailpit.db
       - TZ=Asia/Tokyo
