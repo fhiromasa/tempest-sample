@@ -19,7 +19,7 @@ final class CreateUsersTable implements MigratesUp, MigratesDown
             ->primary()
             ->varchar(name: 'username', length: 255)
             ->varchar(name: 'email', length: 255)
-            ->varchar(name: 'password_hash', length: 255)
+            ->varchar(name: 'password', length: 255)
             ->datetime(name: 'created_at')
             ->datetime(name: 'updated_at');
     }

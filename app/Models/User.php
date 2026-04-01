@@ -21,15 +21,13 @@ final class User implements Authenticatable
     use IsDatabaseModel;
 
     public PrimaryKey $id;
-    public string $password_hash;
     public DateTime $created_at;
     public DateTime $updated_at;
 
     public function __construct(
         public string $username,
         public string $email,
-        #[SensitiveParameter]
-        #[Hashed]
+        #[SensitiveParameter, Hashed]
         public string $password,
         /** @var UserPermission[] $userPermissions */
         #[HasMany(UserPermission::class)]

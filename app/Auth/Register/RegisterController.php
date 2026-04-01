@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Auth\Register;
 
 use App\Home\HomeController;
-use App\Models\User;
+use App\Repositories\UserRepository;
 use Tempest\Http\Responses\Redirect;
 use Tempest\Router\Get;
 use Tempest\Router\Post;
@@ -27,8 +27,8 @@ final class RegisterController
     #[Post(uri: '/register')]
     public function register(RegisterRequest $request): Redirect
     {
-        $user = User::create(
-            name: 'sample',
+        $user = UserRepository::create(
+            username: 'sample',
             email: $request->email,
             password: $request->password,
         );
