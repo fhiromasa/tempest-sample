@@ -9,10 +9,10 @@ use Tempest\Database\Config\MysqlConfig;
 use function Tempest\env;
 
 return new MysqlConfig(
-    host: env(key: 'DATABASE_HOST', default: 'localhost'),
+    host: env(key: 'DATABASE_HOST', default: 'database'),
     port: env(key: 'DATABASE_PORT', default: '3306'),
-    username: env(key: 'DATABASE_USER', default: 'mysql'),
-    password: env(key: 'DATABASE_PASSWORD', default: 'mysql'),
+    username: env(key: 'DATABASE_USER', default: 'user'),
+    password: env(key: 'DATABASE_PASSWORD', default: 'password'),
     database: env(key: 'DATABASE_NAME', default: 'database'),
 );
 
