@@ -27,10 +27,6 @@ http://localhost:8080
 
 http://app.localhost:8080
 
-## phpmyadmin
-
-http://phpmyadmin.localhost:8080
-
 ## smtp
 
 http://smtp.localhost:8080

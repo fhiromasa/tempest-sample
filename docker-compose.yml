@@ -7,7 +7,7 @@ services:
     ports:
       - "8080:80"
     environment:
-      VIRTUAL_HOST: app.localhost, phpmyadmin.localhost, smtp.localhost
+      VIRTUAL_HOST: app.localhost, smtp.localhost
 
   # app.localhost
   application:
@@ -34,18 +34,6 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: password
       MYSQL_DATABASE: database
-
-  # phpmyadmin.localhost
-  phpmyadmin:
-    image: phpmyadmin:5.2.2-apache
-    expose:
-      - 80
-    environment:
-      PMA_HOST: database
-      PMA_PORT: 3306
-      PMA_USER: root
-      PMA_PASSWORD: root
-      PMA_ARBITRARY: 1
 
   # smtp.localhost
   smtp:
