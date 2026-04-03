@@ -12,6 +12,7 @@ use Tempest\Database\HasMany;
 use Tempest\Database\IsDatabaseModel;
 use Tempest\Database\PrimaryKey;
 use Tempest\DateTime\DateTime;
+use Tempest\DateTime\FormatPattern;
 use UnitEnum;
 
 final class User implements Authenticatable
@@ -109,5 +110,16 @@ final class User implements Authenticatable
         }
 
         return new Permission(name: $name)->save();
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id->value,
+            'username' => $this->username,
+            'email' => $this->email,
+            'created_at' => $this->created_at->format(FormatPattern::SQL_DATE_TIME),
+            'updated_at' => $this->updated_at->format(FormatPattern::SQL_DATE_TIME),
+        ];
     }
 }

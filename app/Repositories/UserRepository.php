@@ -20,4 +20,19 @@ class UserRepository
 
         return $user;
     }
+
+    /**
+     * Get a list of users.
+     *
+     * @return User[]
+     */
+    public function getUsers(int $limit = 10): array
+    {
+        return User::select()->limit($limit)->all();
+    }
+
+    public function getUserById(int $id): ?User
+    {
+        return User::findById($id);
+    }
 }
