@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Auth\Login;
+namespace App\Http\Auth\Login;
 
 use Tempest\Http\IsRequest;
 use Tempest\Http\Request;

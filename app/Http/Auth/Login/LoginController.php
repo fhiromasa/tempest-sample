@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Auth\Login;
+namespace App\Http\Auth\Login;
 
-use App\Home\HomeController;
+use App\Http\Home\HomeController;
+use App\Http\Mypage\MypageController;
 use App\Models\User;
-use App\Mypage\MypageController;
 use Tempest\Auth\Authentication\Authenticator;
 use Tempest\Http\Response;
 use Tempest\Http\Responses\Invalid;
