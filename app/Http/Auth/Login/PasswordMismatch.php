@@ -8,6 +8,7 @@ use Tempest\Validation\Rule;
 
 class PasswordMismatch implements Rule
 {
+    #[\Override]
     public function isValid($value): bool
     {
         return false;

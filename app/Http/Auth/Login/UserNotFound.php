@@ -8,6 +8,7 @@ use Tempest\Validation\Rule;
 
 class UserNotFound implements Rule
 {
+    #[\Override]
     public function isValid($value): bool
     {
         return false;
