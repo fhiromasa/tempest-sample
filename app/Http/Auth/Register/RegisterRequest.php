@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Auth\Register;
+namespace App\Http\Auth\Register;
 
 use Tempest\Http\IsRequest;
 use Tempest\Http\Request;

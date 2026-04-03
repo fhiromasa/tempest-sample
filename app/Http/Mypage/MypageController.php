@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Mypage;
+namespace App\Http\Mypage;
 
 use App\Middleware\MustBeAuthenticated;
 use Tempest\Auth\Authentication\Authenticator;

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Auth\Login;
+namespace App\Http\Auth\Login;
 
 use Tempest\Validation\Rule;
 
-class UserNotFound implements Rule
+class PasswordMismatch implements Rule
 {
     public function isValid($value): bool
     {
@@ -15,6 +15,6 @@ class UserNotFound implements Rule
 
     public function message(): string
     {
-        return 'User not found';
+        return 'password is incorrect.';
     }
 }

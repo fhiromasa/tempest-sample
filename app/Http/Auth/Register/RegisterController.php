@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Auth\Register;
+namespace App\Http\Auth\Register;
 
-use App\Home\HomeController;
+use App\Http\Home\HomeController;
 use App\Repositories\UserRepository;
 use Tempest\Http\Responses\Redirect;
 use Tempest\Router\Get;

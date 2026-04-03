@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Middleware;
 
-use App\Auth\Login\LoginController;
+use App\Http\Auth\Login\LoginController;
 use Tempest\Auth\Authentication\Authenticator;
 use Tempest\Discovery\SkipDiscovery;
 use Tempest\Http\Request;

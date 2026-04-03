@@ -2,22 +2,19 @@
 
 declare(strict_types=1);
 
-// namespace App\Auth\Register;
+// namespace App\Http\Auth\Login;
 
-use App\Auth\Register\RegisterController;
+use App\Http\Auth\Login\LoginController;
 use Tempest\Http\Session\Session;
 
 use function Tempest\get;
 use function Tempest\Router\uri;
 
 ?>
-
-
-<x-base title="Register">
-    <h1 class="m-4 text-lg text-center">Register</h1>
+<x-base title="Login">
+    <?php $formAction = uri([LoginController::class, 'login']); ?>
+    <h1 class="m-4 text-lg text-center">Login</h1>
     <div class="mr-4 ml-4">
-        <?php $formAction = uri([RegisterController::class, 'register']); ?>
-
         <x-form :action="$formAction" :method="'POST'">
             <?php
 
@@ -56,7 +53,7 @@ use function Tempest\Router\uri;
             </div>
 
             <div class="flex justify-center mb-8">
-                <x-submit class="bg-blue-500 text-white px-4 py-2 rounded" :label="'Create'" />
+                <x-submit class="bg-blue-500 text-white px-4 py-2 rounded" label="Login" />
             </div>
         </x-form>
     </div>
