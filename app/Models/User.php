@@ -41,7 +41,8 @@ final class User implements Authenticatable
      * @param string $rowPassword The raw password, which will be encrypted as soon as it is set
      */
     public static function hashPassword(
-        #[SensitiveParameter] string $rowPassword,
+        #[SensitiveParameter]
+        string $rowPassword,
     ): string {
         return password_hash(password: $rowPassword, algo: PASSWORD_BCRYPT);
     }
@@ -71,7 +72,7 @@ final class User implements Authenticatable
     {
         return arr(input: $this->userPermissions)
             ->first(
-                filter: static fn(UserPermission $userPermission) => $userPermission->permission->matches(
+                filter: static fn (UserPermission $userPermission) => $userPermission->permission->matches(
                     $permission,
                 ),
             );

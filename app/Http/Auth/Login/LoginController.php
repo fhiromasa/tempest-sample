@@ -36,15 +36,13 @@ final class LoginController
         $user = User::select()->where('email = ?', $request->email)->first();
 
         if ($user === null) {
-            return new Invalid(request: $request, failingRules: ['email' =>
-                [new UserNotFound()]]);
+            return new Invalid(request: $request, failingRules: ['email' => [new UserNotFound()]]);
         }
-        if (!password_verify(
+        if (! password_verify(
             password: $request->password,
             hash: $user->password,
         )) {
-            return new Invalid(request: $request, failingRules: ['password' =>
-                [new PasswordMismatch()]]);
+            return new Invalid(request: $request, failingRules: ['password' => [new PasswordMismatch()]]);
         }
 
         $this->authenticator->authenticate(authenticatable: $user);
