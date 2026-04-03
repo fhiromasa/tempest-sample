@@ -13,6 +13,7 @@ final class CreateUserPermissionsTable implements MigratesUp, MigratesDown
 {
     public private(set) string $name = '0000-00-02_create_user_permissions_table';
 
+    #[\Override]
     public function up(): CreateTableStatement
     {
         return new CreateTableStatement(tableName: 'user_permissions')
@@ -24,6 +25,7 @@ final class CreateUserPermissionsTable implements MigratesUp, MigratesDown
             );
     }
 
+    #[\Override]
     public function down(): DropTableStatement
     {
         return new DropTableStatement(tableName: 'user_permissions');

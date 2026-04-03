@@ -22,6 +22,7 @@ final class MustBeAuthenticated implements HttpMiddleware
         private Authenticator $authenticator,
     ) {}
 
+    #[\Override]
     public function __invoke(
         Request $request,
         HttpMiddlewareCallable $handler,

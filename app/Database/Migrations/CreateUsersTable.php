@@ -13,6 +13,7 @@ final class CreateUsersTable implements MigratesUp, MigratesDown
 {
     public private(set) string $name = '0000-00-00_create_users_table';
 
+    #[\Override]
     public function up(): CreateTableStatement
     {
         return new CreateTableStatement(tableName: 'users')
@@ -24,6 +25,7 @@ final class CreateUsersTable implements MigratesUp, MigratesDown
             ->datetime(name: 'updated_at');
     }
 
+    #[\Override]
     public function down(): DropTableStatement
     {
         return new DropTableStatement(tableName: 'users');
