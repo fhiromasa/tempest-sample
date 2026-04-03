@@ -44,7 +44,7 @@
         "phpunit": "vendor/bin/phpunit --display-warnings --display-skipped --display-deprecations --display-errors --display-notices",
         "format": "vendor/bin/mago fmt",
         "lint": "vendor/bin/mago lint --fix && vendor/bin/mago lint",
-        "analyze": "vendor/bin/mago analyze --fix",
+        "analyze": "vendor/bin/mago analyze --fix && vendor/bin/mago analyze",
         "qa": [
             "composer format",
             "composer phpunit",
