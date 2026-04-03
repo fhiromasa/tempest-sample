@@ -16,6 +16,7 @@ final class PasswordResets
 
     public function __construct(
         public int $user_id,
+        #[\SensitiveParameter]
         public string $token,
         public DateTime $expires_at,
     ) {
