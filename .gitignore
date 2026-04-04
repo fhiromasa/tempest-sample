@@ -10,3 +10,5 @@ vendor/
 log/
 *.local.config.php
 *.dev.config.php
+
+.DS_Store

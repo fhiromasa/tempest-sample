@@ -14,8 +14,6 @@ use Tempest\Database\PrimaryKey;
 use Tempest\DateTime\DateTime;
 use UnitEnum;
 
-use function Tempest\Support\arr;
-
 final class User implements Authenticatable
 {
     use IsDatabaseModel;
@@ -41,9 +39,10 @@ final class User implements Authenticatable
      * @param string $rowPassword The raw password, which will be encrypted as soon as it is set
      */
     public static function hashPassword(
-        #[SensitiveParameter] string $rowPassword,
+        #[SensitiveParameter]
+        string $rowPassword,
     ): string {
-        return password_hash(password: $rowPassword, algo: PASSWORD_BCRYPT);
+        return password_hash($rowPassword, PASSWORD_BCRYPT);
     }
 
     public function grantPermission(string|UnitEnum|Permission $permission): self
@@ -69,12 +68,13 @@ final class User implements Authenticatable
 
     public function getPermission(string|UnitEnum|Permission $permission): ?UserPermission
     {
-        return arr(input: $this->userPermissions)
-            ->first(
-                filter: static fn(UserPermission $userPermission) => $userPermission->permission->matches(
-                    $permission,
-                ),
-            );
+        foreach ($this->userPermissions as $userPermission) {
+            if ($userPermission->permission->matches($permission)) {
+                return $userPermission;
+            }
+        }
+
+        return null;
     }
 
     private function resolvePermission(string|UnitEnum|Permission $permission): Permission
@@ -83,16 +83,31 @@ final class User implements Authenticatable
             return $permission;
         }
 
-        $name = match (true) {
-            is_string(value: $permission) => $permission,
-            $permission instanceof BackedEnum => $permission->value,
-            $permission instanceof UnitEnum => $permission->name,
-        };
+        $name = $this->normalizePermissionName($permission);
 
-        $permission = Permission::select()
-            ->whereField(field: 'name', value: $name)
-            ->first();
+        return $this->findOrCreatePermission($name);
+    }
 
-        return $permission ?? new Permission(name: $name)->save();
+    private function normalizePermissionName(string|UnitEnum $permission): string
+    {
+        if ($permission instanceof BackedEnum) {
+            return (string) $permission->value;
+        }
+        if ($permission instanceof UnitEnum) {
+            return $permission->name;
+        }
+
+        return $permission;
+    }
+
+    private function findOrCreatePermission(string $name): Permission
+    {
+        $permission = Permission::find(name: $name)->first();
+
+        if ($permission instanceof Permission) {
+            return $permission;
+        }
+
+        return new Permission(name: $name)->save();
     }
 }

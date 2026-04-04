@@ -33,18 +33,13 @@ final class LoginController
     #[Post(uri: '/login')]
     public function login(LoginRequest $request): Response
     {
-        $user = User::select()->where('email = ?', $request->email)->first();
+        $user = User::find(email: $request->email)->first();
 
-        if ($user === null) {
-            return new Invalid(request: $request, failingRules: ['email' =>
-                [new UserNotFound()]]);
+        if (! $user instanceof User) {
+            return new Invalid(request: $request, failingRules: ['email' => [new UserNotFound()]]);
         }
-        if (!password_verify(
-            password: $request->password,
-            hash: $user->password,
-        )) {
-            return new Invalid(request: $request, failingRules: ['password' =>
-                [new PasswordMismatch()]]);
+        if (! password_verify($request->password, $user->password)) {
+            return new Invalid(request: $request, failingRules: ['password' => [new PasswordMismatch()]]);
         }
 
         $this->authenticator->authenticate(authenticatable: $user);

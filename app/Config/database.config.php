@@ -9,17 +9,17 @@ use Tempest\Database\Config\MysqlConfig;
 use function Tempest\env;
 
 return new MysqlConfig(
-    host: env(key: 'DATABASE_HOST', default: 'database'),
-    port: env(key: 'DATABASE_PORT', default: '3306'),
-    username: env(key: 'DATABASE_USER', default: 'user'),
-    password: env(key: 'DATABASE_PASSWORD', default: 'password'),
-    database: env(key: 'DATABASE_NAME', default: 'database'),
+    host: (string) env(key: 'DATABASE_HOST', default: 'database'),
+    port: (string) env(key: 'DATABASE_PORT', default: '3306'),
+    username: (string) env(key: 'DATABASE_USER', default: 'user'),
+    password: (string) env(key: 'DATABASE_PASSWORD', default: 'password'),
+    database: (string) env(key: 'DATABASE_NAME', default: 'database'),
 );
 
 // new PostgresConfig(
-//     $host = env(key: 'DATABASE_HOST', default: 'localhost'),
-//     $port = env(key: 'DATABASE_PORT', default: '5432'),
-//     $username = env(key: 'DATABASE_USER', default: 'postgres'),
-//     $password = env(key: 'DATABASE_PASSWORD', default: 'postgres'),
-//     $database = env(key: 'DATABASE_NAME', default: 'database'),
+//     $host = (string) env(key: 'DATABASE_HOST', default: 'localhost'),
+//     $port = (string) env(key: 'DATABASE_PORT', default: '5432'),
+//     $username = (string) env(key: 'DATABASE_USER', default: 'postgres'),
+//     $password = (string) env(key: 'DATABASE_PASSWORD', default: 'postgres'),
+//     $database = (string) env(key: 'DATABASE_NAME', default: 'database'),
 // );

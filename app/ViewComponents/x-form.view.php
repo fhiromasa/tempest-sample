@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
+use Tempest\Http\Method;
+
 /**
  * @var string|null $action
  * @var string|Method|null $method
  * @var string|null $enctype
  */
-
-use Tempest\Http\Method;
 
 $action ??= null;
 $method ??= Method::POST;
