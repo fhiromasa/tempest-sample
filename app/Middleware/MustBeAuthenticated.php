@@ -25,7 +25,7 @@ final class MustBeAuthenticated implements HttpMiddleware
     #[\Override]
     public function __invoke(
         Request $request,
-        HttpMiddlewareCallable $handler,
+        HttpMiddlewareCallable $next,
     ): Response {
         ll(
             self::class . " called from {$request->method->value} {$request->path}",
@@ -39,6 +39,6 @@ final class MustBeAuthenticated implements HttpMiddleware
             ]));
         }
 
-        return $handler($request);
+        return $next($request);
     }
 }

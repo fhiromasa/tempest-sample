@@ -18,8 +18,8 @@ use function Tempest\Router\uri;
         <x-form :action="$formAction" :method="'POST'">
             <?php
 
-            $emailOriginal = get(Session::class)->get(Session::ORIGINAL_VALUES)['email'] ?? null;
-            $emailErrors = get(Session::class)->get(Session::VALIDATION_ERRORS)['email'] ?? [];
+            $emailOriginal = (string) (get(Session::class)->getOriginalValueFor('email') ?? null);
+            $emailErrors = get(Session::class)->getErrorsFor('email');
             ?>
 
             <div>
@@ -33,8 +33,8 @@ use function Tempest\Router\uri;
             </div>
             <?php
 
-            $passwordOriginal = get(Session::class)->get(Session::ORIGINAL_VALUES)['password'] ?? null;
-            $passwordErrors = get(Session::class)->get(Session::VALIDATION_ERRORS)['password'] ?? [];
+            $passwordOriginal = (string) (get(Session::class)->getOriginalValueFor('password') ?? null);
+            $passwordErrors = get(Session::class)->getErrorsFor('password');
             ?>
             <div>
                 <label for="password">Password:</label>
