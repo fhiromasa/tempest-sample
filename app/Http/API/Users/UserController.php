@@ -62,7 +62,7 @@ final class UserController
      * ]
      */
     #[Get(uri: '/api/users')]
-    public function __invoke(): Json
+    public function getUsers(): Json
     {
         $users = $this->userRepo->getUsers();
 
