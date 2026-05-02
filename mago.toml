@@ -34,3 +34,6 @@ strict-list-index-checks = true
 no-boolean-literal-comparison = false
 check-missing-type-hints = false
 register-super-globals = true
+ignore = [
+  { code = "unhandled-thrown-type", in = "tests/" },
+]
