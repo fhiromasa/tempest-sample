@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Sample project for tempest framework",
     "require": {
-        "php": "^8.4",
+        "php": "^8.5",
         "ext-bcmath": "*",
         "ext-gd": "*",
         "ext-ftp": "*",
