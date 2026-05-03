@@ -7,7 +7,7 @@ declare(strict_types=1);
 use App\Http\Auth\Login\LoginController;
 use Tempest\Http\Session\Session;
 
-use function Tempest\get;
+use function Tempest\Container\get;
 use function Tempest\Router\uri;
 
 ?>
@@ -18,8 +18,8 @@ use function Tempest\Router\uri;
         <x-form :action="$formAction" :method="'POST'">
             <?php
 
-            $emailOriginal = (string) (get(Session::class)->getOriginalValueFor('email') ?? null);
-            $emailErrors = get(Session::class)->getErrorsFor('email');
+            $emailOriginal = (string) (\Tempest\Container\get(Session::class)->getOriginalValueFor('email') ?? null);
+            $emailErrors = \Tempest\Container\get(Session::class)->getErrorsFor('email');
             ?>
 
             <div>
@@ -33,8 +33,8 @@ use function Tempest\Router\uri;
             </div>
             <?php
 
-            $passwordOriginal = (string) (get(Session::class)->getOriginalValueFor('password') ?? null);
-            $passwordErrors = get(Session::class)->getErrorsFor('password');
+            $passwordOriginal = (string) (\Tempest\Container\get(Session::class)->getOriginalValueFor('password') ?? null);
+            $passwordErrors = \Tempest\Container\get(Session::class)->getErrorsFor('password');
             ?>
             <div>
                 <label for="password">Password:</label>

@@ -13,7 +13,11 @@ return RectorConfig::configure()
     ])
     // uncomment to reach your current PHP version
     // ->withPhpSets()
-    ->withSets([TempestSetList::TEMPEST_20, TempestSetList::TEMPEST_28])
+    ->withSets([
+        TempestSetList::TEMPEST_20,
+        TempestSetList::TEMPEST_28,
+        TempestSetList::TEMPEST_30,
+    ])
     ->withTypeCoverageLevel(0)
     ->withDeadCodeLevel(0)
     ->withCodeQualityLevel(0);

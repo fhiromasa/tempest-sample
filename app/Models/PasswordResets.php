@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use SensitiveParameter;
 use Tempest\Database\IsDatabaseModel;
 use Tempest\DateTime\DateTime;
 
@@ -16,7 +17,7 @@ final class PasswordResets
 
     public function __construct(
         public int $user_id,
-        #[\SensitiveParameter]
+        #[SensitiveParameter]
         public string $token,
         public DateTime $expires_at,
     ) {

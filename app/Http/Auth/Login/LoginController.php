@@ -16,7 +16,7 @@ use Tempest\Router\Post;
 use Tempest\View\View;
 
 use function Tempest\Router\uri;
-use function Tempest\view;
+use function Tempest\View\view;
 
 final class LoginController
 {
@@ -27,7 +27,7 @@ final class LoginController
     #[Get(uri: '/login')]
     public function loginForm(): View
     {
-        return view(path: 'login.view.php');
+        return \Tempest\View\view(path: 'login.view.php');
     }
 
     #[Post(uri: '/login')]

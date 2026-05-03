@@ -12,7 +12,7 @@ use Tempest\Router\Post;
 use Tempest\View\View;
 
 use function Tempest\Router\uri;
-use function Tempest\view;
+use function Tempest\View\view;
 
 final class RegisterController
 {
@@ -21,7 +21,7 @@ final class RegisterController
     #[Get(uri: '/register')]
     public function registerForm(): View
     {
-        return view(path: 'register.view.php');
+        return \Tempest\View\view(path: 'register.view.php');
     }
 
     #[Post(uri: '/register')]

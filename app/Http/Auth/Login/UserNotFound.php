@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Http\Auth\Login;
 
+use Override;
 use Tempest\Validation\Rule;
 
 class UserNotFound implements Rule
 {
-    #[\Override]
+    #[Override]
     public function isValid($value): bool
     {
         return false;

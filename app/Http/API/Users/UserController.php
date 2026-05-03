@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\API\Users;
 
 use App\Repositories\UserRepository;
+use Exception;
 use Tempest\Http\Request;
 use Tempest\Http\Responses\Json;
 use Tempest\Http\Status;
@@ -42,7 +43,7 @@ final class UserController
         try {
             // @Todo throw exception when user already exists(key=email).
             $newUser = $this->userRepo->create($request->username, $request->email, $request->password);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->alert($e->getMessage());
             return new Json(['error' => 'an error occurred'])->setStatus(Status::INTERNAL_SERVER_ERROR);
         }
@@ -91,7 +92,7 @@ final class UserController
     {
         try {
             $user = $this->userRepo->findById($id);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->alert($e->getMessage());
             return new Json(['error' => 'an error occurred'])->setStatus(Status::NOT_FOUND);
         }
@@ -122,7 +123,7 @@ final class UserController
                 (string) $request->get('email', null),
                 (string) $request->get('password', null),
             );
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->alert($e->getMessage());
             return new Json(['error' => 'an error occurred'])->setStatus(Status::INTERNAL_SERVER_ERROR);
         }
@@ -143,7 +144,7 @@ final class UserController
             if (! $res) {
                 return new Json(['error' => 'user not found'])->setStatus(Status::NOT_FOUND);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->alert($e->getMessage());
             return new Json(['error' => 'an error occurred'])->setStatus(Status::INTERNAL_SERVER_ERROR);
         }
