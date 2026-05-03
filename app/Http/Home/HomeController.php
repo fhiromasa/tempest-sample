@@ -14,6 +14,6 @@ final readonly class HomeController
     #[Get(uri: '/')]
     public function __invoke(): View
     {
-        return \Tempest\View\view(path: 'home.view.php');
+        return view(path: 'home.view.php');
     }
 }

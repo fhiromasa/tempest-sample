@@ -30,7 +30,7 @@ final readonly class LoginController
     #[Get(uri: '/login')]
     public function loginForm(): View
     {
-        return \Tempest\View\view(path: 'login.view.php');
+        return view(path: 'login.view.php');
     }
 
     #[Post(uri: '/login')]

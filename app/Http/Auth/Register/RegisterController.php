@@ -21,7 +21,7 @@ final class RegisterController
     #[Get(uri: '/register')]
     public function registerForm(): View
     {
-        return \Tempest\View\view(path: 'register.view.php');
+        return view(path: 'register.view.php');
     }
 
     #[Post(uri: '/register')]

@@ -23,7 +23,7 @@ final readonly class MypageController
     {
         /** @var User $user */
         $user = $this->authenticator->current();
-        return \Tempest\View\view('mypage.view.php')
+        return view('mypage.view.php')
             ->data(
                 id: $user->id,
                 email: $user->email,
