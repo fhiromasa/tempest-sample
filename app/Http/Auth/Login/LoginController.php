@@ -18,7 +18,7 @@ use Tempest\View\View;
 use function Tempest\Router\uri;
 use function Tempest\View\view;
 
-final class LoginController
+final readonly class LoginController
 {
     public function __construct(
         private Authenticator $authenticator,

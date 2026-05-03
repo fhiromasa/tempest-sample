@@ -17,7 +17,7 @@ use Tempest\Router\HttpMiddlewareCallable;
 use function Tempest\Router\uri;
 
 #[SkipDiscovery]
-final class MustBeAuthenticated implements HttpMiddleware
+final readonly class MustBeAuthenticated implements HttpMiddleware
 {
     function __construct(
         private Authenticator $authenticator,

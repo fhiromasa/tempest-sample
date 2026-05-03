@@ -17,7 +17,7 @@ use Tempest\Router\Put;
 use Tempest\Router\Stateless;
 
 #[Stateless]
-final class UserController
+final readonly class UserController
 {
     public function __construct(
         private UserRepository $userRepo,

@@ -12,7 +12,7 @@ use Tempest\View\View;
 
 use function Tempest\View\view;
 
-final class MypageController
+final readonly class MypageController
 {
     function __construct(
         private Authenticator $authenticator,
