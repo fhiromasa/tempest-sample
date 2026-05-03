@@ -18,6 +18,7 @@ integrations = ["symfony", "phpunit", "tempest"]
 ambiguous-function-call = { enabled = false }
 literal-named-argument = { enabled = false }
 halstead = { effort-threshold = 7000 }
+no-literal-password = { exclude = ["tests/"] }
 
 [analyzer]
 plugins = []
@@ -33,3 +34,6 @@ strict-list-index-checks = true
 no-boolean-literal-comparison = false
 check-missing-type-hints = false
 register-super-globals = true
+ignore = [
+  { code = "unhandled-thrown-type", in = "tests/" },
+]
