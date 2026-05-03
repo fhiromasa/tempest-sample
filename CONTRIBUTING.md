@@ -41,4 +41,7 @@ docker compose exec application composer format
 
 # lint
 docker compose exec application composer lint
+
+# analyze
+docker compose exec application composer analyze
 ```
