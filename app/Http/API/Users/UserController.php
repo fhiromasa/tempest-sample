@@ -38,8 +38,9 @@ final class UserController
     #[Post(uri: '/api/users')]
     public function createUser(CreateUserRequest $request): Json
     {
+        $this->logger->debug(__METHOD__ . ' - ' . json_encode($request));
         try {
-            // @Todo emailの重複既存ユーザーがいる場合はエラーを出す
+            // @Todo throw exception when user already exists(key=email).
             $newUser = $this->userRepo->create($request->username, $request->email, $request->password);
         } catch (\Exception $e) {
             $this->logger->alert($e->getMessage());
