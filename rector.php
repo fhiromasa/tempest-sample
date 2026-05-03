@@ -12,8 +12,12 @@ return RectorConfig::configure()
         __DIR__ . '/tests',
     ])
     // uncomment to reach your current PHP version
-    // ->withPhpSets()
-    ->withSets([TempestSetList::TEMPEST_20, TempestSetList::TEMPEST_28])
+    ->withPhpSets(php85: true)
+    ->withSets([
+        TempestSetList::TEMPEST_20,
+        TempestSetList::TEMPEST_28,
+        TempestSetList::TEMPEST_30,
+    ])
     ->withTypeCoverageLevel(0)
     ->withDeadCodeLevel(0)
     ->withCodeQualityLevel(0);

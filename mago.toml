@@ -22,6 +22,8 @@ no-literal-password = { exclude = ["tests/"] }
 
 [analyzer]
 plugins = []
+baseline = "analysis-baseline.toml"
+
 find-unused-definitions = true
 find-unused-expressions = true
 analyze-dead-code = false

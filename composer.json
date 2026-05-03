@@ -13,13 +13,13 @@
         "ext-soap": "*",
         "ext-Zend-OPcache": "*",
         "ext-zip": "*",
-        "tempest/framework": "2.14"
+        "tempest/framework": "3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.2 || ^11.5.15",
         "symfony/var-dumper": "^7.2.3",
         "carthage-software/mago": "^1.25",
-        "rector/rector": "2.2.14"
+        "rector/rector": "^2.4"
     },
     "autoload": {
         "psr-4": {

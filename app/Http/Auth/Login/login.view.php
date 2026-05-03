@@ -5,9 +5,7 @@ declare(strict_types=1);
 // namespace App\Http\Auth\Login;
 
 use App\Http\Auth\Login\LoginController;
-use Tempest\Http\Session\Session;
 
-use function Tempest\get;
 use function Tempest\Router\uri;
 
 ?>
@@ -16,35 +14,8 @@ use function Tempest\Router\uri;
     <h1 class="m-4 text-lg text-center">Login</h1>
     <div class="mr-4 ml-4">
         <x-form :action="$formAction" :method="'POST'">
-            <?php
-
-            $emailOriginal = (string) (get(Session::class)->getOriginalValueFor('email') ?? null);
-            $emailErrors = get(Session::class)->getErrorsFor('email');
-            ?>
-
-            <div>
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" :value="$emailOriginal" placeholder="sample@example.com" />
-                <div :foreach="$emailErrors as $error">
-                    <p>
-                        {{$error->message()}}
-                    </p>
-                </div>
-            </div>
-            <?php
-
-            $passwordOriginal = (string) (get(Session::class)->getOriginalValueFor('password') ?? null);
-            $passwordErrors = get(Session::class)->getErrorsFor('password');
-            ?>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" />
-                <div :foreach="$passwordErrors as $error">
-                    <p>
-                        {{$error->message()}}
-                    </p>
-                </div>
-            </div>
+            <x-input :name="'email'" :label="'Email'" :type="'email'" :placeholder="'sample@example.com'" />
+            <x-input :name="'password'" :label="'Password'" :type="'password'" />
 
             <div class="flex justify-center mb-8">
                 <x-submit class="bg-blue-500 text-white px-4 py-2 rounded" label="Login" />

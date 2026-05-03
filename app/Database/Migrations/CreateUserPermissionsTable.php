@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Database\Migrations;
 
+use Override;
 use Tempest\Database\MigratesDown;
 use Tempest\Database\MigratesUp;
 use Tempest\Database\QueryStatements\CreateTableStatement;
@@ -13,7 +14,7 @@ final class CreateUserPermissionsTable implements MigratesUp, MigratesDown
 {
     public private(set) string $name = '0000-00-02_create_user_permissions_table';
 
-    #[\Override]
+    #[Override]
     public function up(): CreateTableStatement
     {
         return new CreateTableStatement(tableName: 'user_permissions')
@@ -25,7 +26,7 @@ final class CreateUserPermissionsTable implements MigratesUp, MigratesDown
             );
     }
 
-    #[\Override]
+    #[Override]
     public function down(): DropTableStatement
     {
         return new DropTableStatement(tableName: 'user_permissions');

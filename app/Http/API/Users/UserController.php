@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\API\Users;
 
 use App\Repositories\UserRepository;
+use Exception;
 use Tempest\Http\Request;
 use Tempest\Http\Responses\Json;
 use Tempest\Http\Status;
@@ -16,7 +17,7 @@ use Tempest\Router\Put;
 use Tempest\Router\Stateless;
 
 #[Stateless]
-final class UserController
+final readonly class UserController
 {
     public function __construct(
         private UserRepository $userRepo,
@@ -38,11 +39,11 @@ final class UserController
     #[Post(uri: '/api/users')]
     public function createUser(CreateUserRequest $request): Json
     {
-        $this->logger->debug(__METHOD__ . ' - ' . json_encode($request));
+        $this->logger->debug(__METHOD__ . ' - ' . (string) json_encode($request));
         try {
             // @Todo throw exception when user already exists(key=email).
             $newUser = $this->userRepo->create($request->username, $request->email, $request->password);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->alert($e->getMessage());
             return new Json(['error' => 'an error occurred'])->setStatus(Status::INTERNAL_SERVER_ERROR);
         }
@@ -91,7 +92,7 @@ final class UserController
     {
         try {
             $user = $this->userRepo->findById($id);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->alert($e->getMessage());
             return new Json(['error' => 'an error occurred'])->setStatus(Status::NOT_FOUND);
         }
@@ -122,7 +123,7 @@ final class UserController
                 (string) $request->get('email', null),
                 (string) $request->get('password', null),
             );
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->alert($e->getMessage());
             return new Json(['error' => 'an error occurred'])->setStatus(Status::INTERNAL_SERVER_ERROR);
         }
@@ -143,7 +144,7 @@ final class UserController
             if (! $res) {
                 return new Json(['error' => 'user not found'])->setStatus(Status::NOT_FOUND);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->alert($e->getMessage());
             return new Json(['error' => 'an error occurred'])->setStatus(Status::INTERNAL_SERVER_ERROR);
         }

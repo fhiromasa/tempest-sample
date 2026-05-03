@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Middleware;
 
 use App\Http\Auth\Login\LoginController;
+use Override;
 use Tempest\Auth\Authentication\Authenticator;
 use Tempest\Discovery\SkipDiscovery;
 use Tempest\Http\Request;
@@ -16,13 +17,13 @@ use Tempest\Router\HttpMiddlewareCallable;
 use function Tempest\Router\uri;
 
 #[SkipDiscovery]
-final class MustBeAuthenticated implements HttpMiddleware
+final readonly class MustBeAuthenticated implements HttpMiddleware
 {
     function __construct(
         private Authenticator $authenticator,
     ) {}
 
-    #[\Override]
+    #[Override]
     public function __invoke(
         Request $request,
         HttpMiddlewareCallable $next,

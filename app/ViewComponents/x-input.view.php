@@ -10,20 +10,22 @@ declare(strict_types=1);
  * @var string|null $default
  */
 
-use Tempest\Http\Session\Session;
+use Tempest\Http\Session\FormSession;
+use Tempest\Validation\Validator;
 
-use function Tempest\get;
+use function Tempest\Container\get;
 use function Tempest\Support\str;
 
-$session = get(Session::class);
+$formSession = get(FormSession::class);
+$validator = get(Validator::class);
 
 $label ??= str($name)->title();
 $id ??= $name;
 $type ??= 'text';
 $default ??= null;
 
-$errors = $session->getErrorsFor($name);
-$original = (string) ($session->getOriginalValueFor($name, $default) ?? '');
+$errors = $formSession->getErrorsFor($name);
+$original = $formSession->getOriginalValueFor($name, $default);
 ?>
 
 <div>
@@ -32,9 +34,9 @@ $original = (string) ($session->getOriginalValueFor($name, $default) ?? '');
     <textarea :if="$type === 'textarea'" :name="$name" :id="$id">{{ $original }}</textarea>
     <input :else :type="$type" :name="$name" :id="$id" :value="$original"/>
 
-    <div :if="$errors !== []">
-        <div :foreach="$errors as $error">
-            {{ $error->message() }}
-        </div>
-    </div>
+    <ul :if="$errors !== []">
+        <li :foreach="$errors as $error">
+            {{ $validator->getErrorMessage($error) }}
+        </li>
+    </ul>
 </div>
