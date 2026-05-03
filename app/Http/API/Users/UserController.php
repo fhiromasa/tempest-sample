@@ -39,7 +39,7 @@ final readonly class UserController
     #[Post(uri: '/api/users')]
     public function createUser(CreateUserRequest $request): Json
     {
-        $this->logger->debug(__METHOD__ . ' - ' . json_encode($request));
+        $this->logger->debug(__METHOD__ . ' - ' . (string) json_encode($request));
         try {
             // @Todo throw exception when user already exists(key=email).
             $newUser = $this->userRepo->create($request->username, $request->email, $request->password);
