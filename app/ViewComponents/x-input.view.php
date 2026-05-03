@@ -10,12 +10,12 @@ declare(strict_types=1);
  * @var string|null $default
  */
 
-use Tempest\Http\Session\Session;
+use Tempest\Http\Session\FormSession;
 
 use function Tempest\Container\get;
 use function Tempest\Support\str;
 
-$session = \Tempest\Container\get(Session::class);
+$session = get(FormSession::class);
 
 $label ??= str($name)->title();
 $id ??= $name;
