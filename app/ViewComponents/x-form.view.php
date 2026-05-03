@@ -19,7 +19,5 @@ if ($method instanceof Method) {
 ?>
 
 <form :action="$action" :method="$method" :enctype="$enctype">
-    <x-csrf-token />
-
     <x-slot />
 </form>
