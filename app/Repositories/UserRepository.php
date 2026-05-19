@@ -33,11 +33,14 @@ class UserRepository
         return User::select()->limit($limit)->all();
     }
 
-    public function findById(string|int|PrimaryKey $id): User
+    public function findById(string|int|PrimaryKey $id): ?User
     {
         return User::findById($id);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function update(
         string|int|PrimaryKey $id,
         string $username = '',
@@ -46,6 +49,10 @@ class UserRepository
         string $password = '',
     ): User {
         $user = User::findById($id);
+        if ($user === null) {
+            throw new \Exception('User not found');
+        }
+
         if ($username !== '') {
             $user->username = $username;
             $user->updated_at = DateTime::now();
@@ -62,9 +69,15 @@ class UserRepository
         return $user;
     }
 
+    /**
+     * @throws \Exception
+     */
     public function delete(string|int|PrimaryKey $id): bool
     {
         $user = User::findById($id);
+        if ($user === null) {
+            throw new \Exception('User not found');
+        }
         $user->delete();
         return true;
     }
