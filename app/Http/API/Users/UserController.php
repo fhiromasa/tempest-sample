@@ -104,9 +104,8 @@ final readonly class UserController
 
     /**
      * Update a specific user.
-     * @todo create nullable validation.
      * @todo validate user exist.
-     * @example curl -X PUT http://app.localhost:8080/api/users/{id} -d '{"username": "update"}'
+     * @example curl -X PUT http://app.localhost:8080/api/users/{id} -d '{"username": "update","email": null, "password": null}'
      * @return Json {
      *   "id": 1,
      *   "username": "sample",
@@ -116,7 +115,7 @@ final readonly class UserController
      * }
      */
     #[Put(uri: '/api/users/{id}')]
-    public function updateUser(int $id, Request $request): Json
+    public function updateUser(int $id, UpdateUserRequest $request): Json
     {
         try {
             $updatedUser = $this->userRepo->update(
