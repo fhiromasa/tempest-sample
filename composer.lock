@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f6073d4ea11b194f0348048dc30d7f9",
+    "content-hash": "f02470eab67090994a2c6f7734625035",
     "packages": [
         {
             "name": "composer/semver",
@@ -4346,16 +4346,16 @@
         },
         {
             "name": "tempest/framework",
-            "version": "v3.4.0",
+            "version": "v3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-framework.git",
-                "reference": "5ab7d446f52aa5132c6e3686b4dfd04f0a2ba640"
+                "reference": "263ef281876ce88a19eea6c6936fa5dfae9047be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-framework/zipball/5ab7d446f52aa5132c6e3686b4dfd04f0a2ba640",
-                "reference": "5ab7d446f52aa5132c6e3686b4dfd04f0a2ba640",
+                "url": "https://api.github.com/repos/tempestphp/tempest-framework/zipball/263ef281876ce88a19eea6c6936fa5dfae9047be",
+                "reference": "263ef281876ce88a19eea6c6936fa5dfae9047be",
                 "shasum": ""
             },
             "require": {
@@ -4443,7 +4443,7 @@
                 "aws/aws-sdk-php": "^3.338.0",
                 "azure-oss/storage-blob-flysystem": "^1.2",
                 "brianium/paratest": "^7.14",
-                "carthage-software/mago": "1.0.0-beta.28",
+                "carthage-software/mago": "1.16.0",
                 "guzzlehttp/psr7": "^2.6.1",
                 "league/flysystem-aws-s3-v3": "^3.25.1",
                 "league/flysystem-ftp": "^3.25.1",
@@ -4572,7 +4572,7 @@
             "description": "The PHP framework that gets out of your way.",
             "support": {
                 "issues": "https://github.com/tempestphp/tempest-framework/issues",
-                "source": "https://github.com/tempestphp/tempest-framework/tree/v3.4.0"
+                "source": "https://github.com/tempestphp/tempest-framework/tree/v3.9.0"
             },
             "funding": [
                 {
@@ -4580,7 +4580,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-13T10:38:59+00:00"
+            "time": "2026-04-01T06:15:40+00:00"
         },
         {
             "name": "tempest/highlight",
