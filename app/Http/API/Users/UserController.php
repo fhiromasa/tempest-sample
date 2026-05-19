@@ -119,10 +119,10 @@ final readonly class UserController
     {
         try {
             $updatedUser = $this->userRepo->update(
-                $id,
-                (string) $request->get('username', null),
-                (string) $request->get('email', null),
-                (string) $request->get('password', null),
+                id: $id,
+                username: $request->username,
+                email: $request->email,
+                password: $request->password,
             );
         } catch (Exception $e) {
             $this->logger->alert($e->getMessage());

@@ -43,25 +43,25 @@ class UserRepository
      */
     public function update(
         string|int|PrimaryKey $id,
-        string $username = '',
-        string $email = '',
+        ?string $username = null,
+        ?string $email = null,
         #[SensitiveParameter]
-        string $password = '',
+        ?string $password = null,
     ): User {
         $user = User::findById($id);
         if ($user === null) {
             throw new \Exception('User not found');
         }
 
-        if ($username !== '') {
+        if ($username !== null) {
             $user->username = $username;
             $user->updated_at = DateTime::now();
         }
-        if ($email !== '') {
+        if ($email !== null) {
             $user->email = $email;
             $user->updated_at = DateTime::now();
         }
-        if ($password !== '') {
+        if ($password !== null) {
             $user->password = $password;
             $user->updated_at = DateTime::now();
         }
