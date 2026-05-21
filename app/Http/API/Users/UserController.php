@@ -6,7 +6,6 @@ namespace App\Http\API\Users;
 
 use App\Repositories\UserRepository;
 use Exception;
-use Tempest\Http\Request;
 use Tempest\Http\Responses\Json;
 use Tempest\Http\Status;
 use Tempest\Log\Logger;
