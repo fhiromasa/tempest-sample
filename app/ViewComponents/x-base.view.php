@@ -17,10 +17,16 @@ declare(strict_types=1);
 
     <x-slot name="head"/>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
 </head>
-<body class="flex flex-col h-full antialiased">
-<x-slot/>
-<x-slot name="scripts"/>
+<body>
+    <div id="app">
+        <x-header/>
+        <x-slot/>
+        <x-footer/>
+    </div>
+
+    <script type="module" src="/assets/js/main.js"></script>
+    <x-slot name="scripts"/>
 </body>
 </html>
