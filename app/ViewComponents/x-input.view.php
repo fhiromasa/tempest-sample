@@ -28,11 +28,11 @@ $errors = $formSession->getErrorsFor($name);
 $original = $formSession->getOriginalValueFor($name, $default);
 ?>
 
-<div>
-    <label :for="$id">{{ $label }}</label>
+<div class="form-group">
+    <label :for="$id" class="form-label">{{ $label }}</label>
 
-    <textarea :if="$type === 'textarea'" :name="$name" :id="$id">{{ $original }}</textarea>
-    <input :else :type="$type" :name="$name" :id="$id" :value="$original"/>
+    <textarea :if="$type === 'textarea'" :name="$name" :id="$id" class="form-textarea">{{ $original }}</textarea>
+    <input :else :type="$type" :name="$name" :id="$id" class="form-input" :value="$original"/>
 
     <ul :if="$errors !== []">
         <li :foreach="$errors as $error">

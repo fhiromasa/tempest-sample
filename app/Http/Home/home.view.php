@@ -11,44 +11,7 @@ declare(strict_types=1);
             <!-- Post list view -->
             <div id="post-list-view" class="view active">
                 <!-- New Post Form -->
-                <div class="create-post-section">
-                    <button id="toggle-post-form" class="create-post-button">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 5v14"></path>
-                            <path d="M5 12h14"></path>
-                        </svg>
-                        新しい投稿を作成
-                    </button>
-                    <div id="post-form-container" class="form-container hidden">
-                        <form id="post-form" class="form">
-                            <div class="form-header">
-                                <h3 class="form-title">新しい投稿</h3>
-                                <button type="button" id="close-post-form" class="close-button">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M18 6L6 18"></path>
-                                        <path d="M6 6l12 12"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="form-group">
-                                <label for="post-author" class="form-label">ユーザー名</label>
-                                <input type="text" id="post-author" class="form-input" placeholder="your_username" required />
-                            </div>
-                            <div class="form-group">
-                                <label for="post-title-input" class="form-label">タイトル</label>
-                                <input type="text" id="post-title-input" class="form-input" placeholder="投稿のタイトルを入力..." required />
-                            </div>
-                            <div class="form-group">
-                                <label for="post-body" class="form-label">本文</label>
-                                <textarea id="post-body" class="form-textarea" placeholder="投稿の内容を入力..." rows="5" required></textarea>
-                            </div>
-                            <div class="form-actions">
-                                <button type="button" id="cancel-post" class="btn btn-secondary">キャンセル</button>
-                                <button type="submit" class="btn btn-primary">投稿する</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <x-post-form />
 
                 <h2 class="section-title">投稿一覧</h2>
                 <div id="posts-container" class="posts-container">
