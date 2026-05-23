@@ -6,30 +6,59 @@ declare(strict_types=1);
 
 ?>
 <x-base>
-    <main class="w-screen h-screen overflow-hidden bg-sky-100/20">
-        <div class="relative isolate px-6 lg:px-8 flex flex-col items-center justify-center h-full">
-            <!-- Background gradient -->
-            <div class="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-                <div
-                        class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#7fbdea] to-[#9980fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-                        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
-                ></div>
+    <main class="main">
+        <div class="container">
+            <!-- Post list view -->
+            <div id="post-list-view" class="view active">
+                <!-- New Post Form -->
+                <x-post-form />
+
+                <h2 class="section-title">投稿一覧</h2>
+                <div id="posts-container" class="posts-container">
+                    <!-- Posts will be rendered here -->
+                </div>
             </div>
-            <!-- Bottom gradient -->
-            <div class="pointer-events-none absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
-                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#7fbdea] to-[#9980fc] opacity-20 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-            </div>
-            <!-- Hero section -->
-            <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-                <div class="text-center">
-                    <!-- Text -->
-                    <h1 class="text-balance text-5xl font-semibold tracking-tight text-gray-800 sm:text-7xl">Tempest</h1>
-                    <p class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">The PHP framework that gets out of your way.</p>
-                    <!-- CTAs -->
-                    <div class="mt-10 flex flex-col sm:flex-row gap-y-4 items-center justify-center gap-x-6">
-                        <a href="https://tempestphp.com/docs" target="_blank" class="rounded-md bg-sky-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">Documentation</a>
-                        <a href="https://tempestphp.com/discord" class="text-sm/6 font-semibold text-gray-900 focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4 focus-visible:decoration-gray-300">Join our Discord
-                            <span aria-hidden="true">→</span></a>
+
+            <!-- Post detail view -->
+            <div id="post-detail-view" class="view">
+                <button id="back-button" class="back-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5"></path>
+                        <path d="M12 19l-7-7 7-7"></path>
+                    </svg>
+                    投稿一覧に戻る
+                </button>
+                <div id="post-detail-container">
+                    <!-- Post detail will be rendered here -->
+                </div>
+                <div class="comments-section">
+                    <h3 class="comments-title">コメント</h3>
+
+                    <!-- Comment Form -->
+                    <div class="comment-form-section">
+                        <form id="comment-form" class="form comment-form">
+                            <div class="form-group">
+                                <label for="comment-author" class="form-label">ユーザー名</label>
+                                <input type="text" id="comment-author" class="form-input" placeholder="your_username" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="comment-body-input" class="form-label">コメント</label>
+                                <textarea id="comment-body-input" class="form-textarea" placeholder="コメントを入力..." rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="reply-to" class="form-label">返信先 (オプション)</label>
+                                <select id="reply-to" class="form-select">
+                                    <option value="">新規コメント</option>
+                                </select>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">コメントを投稿</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="comments-container">
+                        <!-- Comments will be rendered here -->
                     </div>
                 </div>
             </div>

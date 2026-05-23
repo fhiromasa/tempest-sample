@@ -22,6 +22,7 @@ final class CreatePostsTable implements MigratesUp, MigratesDown
             ->varchar(name: 'user_id', length: 255)
             ->varchar(name: 'title', length: 255)
             ->text(name: 'content')
+            ->integer(name: 'votes', nullable: false, default: 0)
             ->datetime(name: 'created_at')
             ->datetime(name: 'updated_at');
     }

@@ -19,8 +19,13 @@ declare(strict_types=1);
 
     <x-vite-tags />
 </head>
-<body class="flex flex-col h-full antialiased">
-<x-slot/>
-<x-slot name="scripts"/>
+<body>
+    <div id="app">
+        <x-header/>
+        <x-slot/>
+        <x-footer/>
+    </div>
+
+    <x-slot name="scripts"/>
 </body>
 </html>
