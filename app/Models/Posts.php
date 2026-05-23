@@ -18,7 +18,7 @@ final class Posts
         public int $user_id,
         public string $title,
         public string $content,
-        public int $votes = 0
+        public int $votes = 0,
     ) {
         $this->created_at = DateTime::now();
         $this->updated_at = DateTime::now();

@@ -6,7 +6,6 @@ namespace App\Http\Posts;
 
 use Tempest\Http\IsRequest;
 use Tempest\Http\Request;
-use Tempest\Validation\Rules\HasLength;
 use Tempest\Validation\Rules\IsNotEmptyString;
 
 final class CreatePostRequest implements Request
@@ -18,6 +17,4 @@ final class CreatePostRequest implements Request
 
     #[IsNotEmptyString]
     public string $content;
-
-
 }
