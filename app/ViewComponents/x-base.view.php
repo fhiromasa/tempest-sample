@@ -17,7 +17,7 @@ declare(strict_types=1);
 
     <x-slot name="head"/>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <x-vite-tags />
 </head>
 <body class="flex flex-col h-full antialiased">
 <x-slot/>
