@@ -11,6 +11,7 @@ docker compose build
 
 # install dependencies
 docker compose run --rm --entrypoint "composer install" application
+docker compose run --rm --entrypoint "bun install" vite-dev-server
 
 # up (option `--build`)
 docker compose up -d
