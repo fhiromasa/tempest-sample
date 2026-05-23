@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Trait\UnknownUserTrait;
 use BackedEnum;
 use SensitiveParameter;
 use Tempest\Auth\Authentication\Authenticatable;
@@ -18,6 +19,8 @@ use UnitEnum;
 final class User implements Authenticatable
 {
     use IsDatabaseModel;
+
+    use UnknownUserTrait;
 
     public PrimaryKey $id;
     public DateTime $created_at;
