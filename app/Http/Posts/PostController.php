@@ -6,13 +6,18 @@ namespace App\Http\Posts;
 
 use App\Http\Home\HomeController;
 use App\Repositories\PostRepository;
+use Tempest\Http\Request;
 use Tempest\Http\Response;
+use Tempest\Http\Responses\NotFound;
 use Tempest\Http\Responses\Redirect;
-use Tempest\Http\Status;
+use Tempest\Http\Responses\ServerError;
 use Tempest\Log\Logger;
+use Tempest\Router\Get;
 use Tempest\Router\Post;
+use Tempest\View\View;
 
 use function Tempest\Router\uri;
+use function Tempest\View\view;
 
 final readonly class PostController
 {
@@ -22,7 +27,7 @@ final readonly class PostController
     ) {}
 
     #[Post('/posts')]
-    public function createPost(CreatePostRequest $request): Redirect
+    public function createPost(CreatePostRequest $request): Response
     {
         $this->logger->debug(__METHOD__ . ' - ' . (string) json_encode($request));
         $guestUserId = 0;
@@ -35,12 +40,24 @@ final readonly class PostController
             );
         } catch (\Exception $e) {
             $this->logger->alert($e->getMessage());
-            return new Response()->setStatus(Status::INTERNAL_SERVER_ERROR);
+            return new ServerError();
         }
 
         return new Redirect(to: uri(action: [
             HomeController::class,
             '__invoke',
         ]));
+    }
+
+    #[Get(uri: 'posts/{id}')]
+    public function getPostById(int $id, Request $request): View|Response
+    {
+        $this->logger->debug(__METHOD__ . ' - ' . (string) json_encode($request));
+        $post = $this->postRepo->findById($id);
+        if (is_null($post)) {
+            return new NotFound();
+        }
+
+        return view(path: 'post.view.php', author: null, post: $post);
     }
 }

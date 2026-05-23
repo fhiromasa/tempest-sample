@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Models\Posts;
+use Tempest\Database\PrimaryKey;
 
 final class PostRepository
 {
@@ -23,5 +24,10 @@ final class PostRepository
         $post->save();
 
         return $post;
+    }
+
+    public function findById(string|int|PrimaryKey $id): ?Posts
+    {
+        return Posts::findById($id);
     }
 }
