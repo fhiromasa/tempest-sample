@@ -31,7 +31,7 @@ $authorInitial = str($author?->username)->substr(0, 1);
   <p class="post-content full">{{ $post->content }}</p>
   <div class="post-stats">
     <div class="stat">
-      <x-icon name="bxs:upvote" />
+      <x-icon name="material-symbols:arrow-shape-up" />
       <span class="stat-votes">{{ $post->votes }}</span>
     </div>
     <div class="stat">
