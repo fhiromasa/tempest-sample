@@ -2,18 +2,20 @@
 
 declare(strict_types=1);
 
+use App\Http\Home\HomeController;
+
+use function Tempest\Router\uri;
+
 ?>
 <x-base>
     <main class="main">
         <div class="container">
             <div id="post-detail-view" class="view active">
-                <button id="back-button" class="back-button">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M19 12H5"></path>
-                        <path d="M12 19l-7-7 7-7"></path>
-                    </svg>
+                <?php $backUrl = uri(action: [HomeController::class, '__invoke']); ?>
+                <a href="{{ $backUrl }}" class="back-button">
+                    <x-icon name="material-symbols:arrow-back" />
                     投稿一覧に戻る
-                </button>
+                </a>
                 <div id="post-detail-container">
                     <!-- Post detail will be rendered here -->
                     <x-post />
