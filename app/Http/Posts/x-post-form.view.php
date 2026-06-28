@@ -40,3 +40,7 @@ $newPostAction = uri(action: [PostController::class, 'createPost']);
         </x-form>
     </div>
 </div>
+
+<slot name="scripts">
+    <x-vite-tags entrypoint="src/posts/post-form.js" />
+</slot>

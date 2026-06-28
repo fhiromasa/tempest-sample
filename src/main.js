@@ -176,13 +176,6 @@ const postDetailContainer = document.getElementById("post-detail-container");
 const commentsContainer = document.getElementById("comments-container");
 const backButton = document.getElementById("back-button");
 
-// Post form elements
-const togglePostFormBtn = document.getElementById("toggle-post-form");
-const postFormContainer = document.getElementById("post-form-container");
-const postForm = document.getElementById("post-form");
-const closePostFormBtn = document.getElementById("close-post-form");
-const cancelPostBtn = document.getElementById("cancel-post");
-
 // Comment form elements
 const commentForm = document.getElementById("comment-form");
 const replyToSelect = document.getElementById("reply-to");
@@ -219,18 +212,6 @@ function updateReplyToOptions(comments) {
     option.textContent = `@${comment.author}: ${comment.content.substring(0, 30)}...`;
     replyToSelect.appendChild(option);
   });
-}
-
-// Toggle post form visibility
-function togglePostForm(show) {
-  if (show) {
-    postFormContainer.classList.remove("hidden");
-    togglePostFormBtn.style.display = "none";
-  } else {
-    postFormContainer.classList.add("hidden");
-    togglePostFormBtn.style.display = "flex";
-    postForm.reset();
-  }
 }
 
 // Create new post
@@ -340,20 +321,6 @@ function setupEventListeners() {
     }
   }
 
-  // Toggle post form
-  togglePostFormBtn.addEventListener("click", () => {
-    togglePostForm(true);
-  });
-
-  // Close post form
-  closePostFormBtn.addEventListener("click", () => {
-    togglePostForm(false);
-  });
-
-  // Cancel post
-  cancelPostBtn.addEventListener("click", () => {
-    togglePostForm(false);
-  });
 
   // Submit new comment
   commentForm.addEventListener("submit", (e) => {
