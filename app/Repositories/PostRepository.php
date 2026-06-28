@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Models\Posts;
+use Tempest\Database\Direction;
 use Tempest\Database\PrimaryKey;
 
 final class PostRepository
@@ -29,5 +30,16 @@ final class PostRepository
     public function findById(string|int|PrimaryKey $id): ?Posts
     {
         return Posts::findById($id);
+    }
+
+    /**
+     * @return Posts[]
+     */
+    public function getForHome(int $limit = 20): array
+    {
+        return Posts::select()
+            ->orderBy(field: 'created_at', direction: Direction::DESC)
+            ->limit(limit: $limit)
+            ->all();
     }
 }

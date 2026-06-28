@@ -14,9 +14,7 @@ declare(strict_types=1);
                 <x-post-form />
 
                 <h2 class="section-title">投稿一覧</h2>
-                <div id="posts-container" class="posts-container">
-                    <!-- Posts will be rendered here -->
-                </div>
+                <x-post-list :posts="$posts" />
             </div>
 
             <!-- Post detail view -->
