@@ -19,7 +19,7 @@ $newPostAction = uri(action: [PostController::class, 'createPost']);
         新しい投稿を作成
     </button>
     <div id="post-form-container" class="form-container hidden">
-        <x-form id="aaaaapost-form" class="form" :action="$newPostAction" :method="'POST'">
+        <x-form id="post-form" class="form" :action="$newPostAction" :method="'POST'">
             <div class="form-header">
                 <h3 class="form-title">新しい投稿</h3>
                 <button type="button" id="close-post-form" class="close-button">
