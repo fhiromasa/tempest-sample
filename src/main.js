@@ -367,6 +367,5 @@ function setupEventListeners() {
 
 // Initialize
 export function init() {
-  loadPosts();
   setupEventListeners();
 }
