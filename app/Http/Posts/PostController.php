@@ -50,7 +50,7 @@ final readonly class PostController
     }
 
     #[Get(uri: 'posts/{id}')]
-    public function getPostById(int $id, Request $request): View|Response
+    public function showPostById(int $id, Request $request): View|Response
     {
         $this->logger->debug(__METHOD__ . ' - ' . (string) json_encode($request));
         $post = $this->postRepo->findById($id);

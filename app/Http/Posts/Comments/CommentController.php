@@ -41,7 +41,7 @@ final readonly class CommentController
         return new Redirect(to: uri(
             action: [
                 PostController::class,
-                'getPostById',
+                'showPostById',
             ],
             id: $post_id,
         ));
