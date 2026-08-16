@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Posts;
 
 use App\Http\Home\HomeController;
+use App\Repositories\CommentRepository;
 use App\Repositories\PostRepository;
 use Tempest\Http\Request;
 use Tempest\Http\Response;
@@ -23,6 +24,7 @@ final readonly class PostController
 {
     public function __construct(
         private PostRepository $postRepo,
+        private CommentRepository $commentRepo,
         private Logger $logger,
     ) {}
 
@@ -58,6 +60,15 @@ final readonly class PostController
             return new NotFound();
         }
 
-        return view(path: 'post.view.php', author: null, post: $post);
+        $comments = $this->commentRepo->findByPostId($id);
+        // ld((string) json_encode($comments));
+
+        return view(
+            path: 'post.view.php',
+            // data
+            author: null,
+            post: $post,
+            comments: $comments,
+        );
     }
 }

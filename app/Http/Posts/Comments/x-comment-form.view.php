@@ -2,15 +2,13 @@
 
 declare(strict_types=1);
 
-/**
- * @var string $postId
- */
-
 use App\Http\Posts\Comments\CommentController;
 
 use function Tempest\Router\uri;
 
-$postId ??= 0;
+/**
+ * @var string $postId
+ */
 
 $newCommentAction = uri(
     action: [CommentController::class, 'createComment'],

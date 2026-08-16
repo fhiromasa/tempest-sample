@@ -27,7 +27,7 @@ use function Tempest\Router\uri;
                     <x-comment-form :postId="$post->id" />
 
                     <div id="comments-container">
-                        <!-- Comments will be rendered here -->
+                        <x-comment-list :comments="$comments" />
                     </div>
                 </div>
             </div>

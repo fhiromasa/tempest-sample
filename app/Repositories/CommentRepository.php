@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Models\Comments;
+use Tempest\Database\Direction;
 
 class CommentRepository
 {
@@ -21,5 +22,19 @@ class CommentRepository
         $comment->save();
 
         return $comment;
+    }
+
+    /**
+     * Find all comments for a given post.
+     *
+     * @return Comments[]
+     */
+    public function findByPostId(int $post_id): array
+    {
+        /** @var array<array-key, \App\Models\Comments> */
+        return Comments::select()
+            ->where('post_id', $post_id)
+            ->orderBy(field: 'created_at', direction: Direction::DESC)
+            ->all();
     }
 }
