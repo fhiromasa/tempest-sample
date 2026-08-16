@@ -14,6 +14,7 @@ $postId ??= 0;
 
 $newCommentAction = uri(
     action: [CommentController::class, 'createComment'],
+    // params
     post_id: $postId,
 );
 
