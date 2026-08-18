@@ -22,7 +22,7 @@ no-literal-password = { exclude = ["tests/"] }
 
 [analyzer]
 plugins = []
-baseline = "analysis-baseline.toml"
+baseline = "mago-analysis-baseline.toml"
 
 find-unused-definitions = true
 find-unused-expressions = true
