@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Tempest\Database\IsDatabaseModel;
+use Tempest\Database\PrimaryKey;
 use Tempest\Database\Virtual;
 use Tempest\DateTime\DateTime;
 
@@ -12,6 +13,7 @@ final class Posts
 {
     use IsDatabaseModel;
 
+    public PrimaryKey $id;
     public DateTime $created_at;
     public DateTime $updated_at;
 
