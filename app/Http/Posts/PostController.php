@@ -45,9 +45,7 @@ final readonly class PostController
             return new ServerError();
         }
 
-        return new Redirect(to: uri(action: [
-            HomeController::class,
-        ]));
+        return new Redirect(to: uri(action: HomeController::class));
     }
 
     #[Get(uri: 'posts/{id}')]

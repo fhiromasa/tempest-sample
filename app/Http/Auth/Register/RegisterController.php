@@ -32,8 +32,6 @@ final class RegisterController
             email: $request->email,
             password: $request->password,
         );
-        return new Redirect(to: uri(action: [
-            HomeController::class,
-        ]));
+        return new Redirect(to: uri(action: HomeController::class));
     }
 }
