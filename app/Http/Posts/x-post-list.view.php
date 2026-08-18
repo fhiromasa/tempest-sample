@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/** @var \App\Models\Posts[] $posts */
+/** @var \App\Models\Post[] $posts */
 ?>
 
 <div id="posts-container" class="posts-container">

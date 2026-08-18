@@ -9,7 +9,7 @@ use Tempest\Database\PrimaryKey;
 use Tempest\Database\Virtual;
 use Tempest\DateTime\DateTime;
 
-final class Posts
+final class Post
 {
     use IsDatabaseModel;
 
