@@ -64,8 +64,6 @@ final readonly class LoginController
     {
         $this->authenticator->deauthenticate();
 
-        return new Redirect(to: uri(action: [
-            HomeController::class,
-        ]));
+        return new Redirect(to: uri(action: HomeController::class));
     }
 }
