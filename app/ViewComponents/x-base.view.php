@@ -8,7 +8,7 @@ declare(strict_types=1);
 ?>
 
 <!doctype html>
-<html lang="en" class="h-dvh flex flex-col scroll-smooth">
+<html lang="ja" class="h-dvh flex flex-col scroll-smooth">
 <head>
     <title>{{ $title ?? 'Tempest' }}</title>
 
