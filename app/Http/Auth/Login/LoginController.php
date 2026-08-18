@@ -66,7 +66,6 @@ final readonly class LoginController
 
         return new Redirect(to: uri(action: [
             HomeController::class,
-            '__invoke',
         ]));
     }
 }

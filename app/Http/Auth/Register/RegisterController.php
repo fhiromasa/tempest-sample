@@ -34,7 +34,6 @@ final class RegisterController
         );
         return new Redirect(to: uri(action: [
             HomeController::class,
-            '__invoke',
         ]));
     }
 }
