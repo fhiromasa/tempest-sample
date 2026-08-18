@@ -7,7 +7,7 @@ use App\Models\User;
 
 /**
  * @var User|null $author
- * @var Posts $post
+ * @var Post $post
  */
 
 $author ??= User::getUnknownUser();
