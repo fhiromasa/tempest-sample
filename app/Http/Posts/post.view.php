@@ -18,7 +18,7 @@ use function Tempest\Router\uri;
                 </a>
                 <div id="post-detail-container">
                     <!-- Post detail will be rendered here -->
-                    <x-post />
+                    <x-post-detail />
                 </div>
                 <div class="comments-section">
                     <h3 class="comments-title">コメント</h3>
