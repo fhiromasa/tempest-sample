@@ -11,7 +11,7 @@ use function Tempest\Router\uri;
   <main class="main">
     <div class="container">
       <div id="post-detail-view" class="view active">
-        <?php $backUrl = uri(action: [HomeController::class]); ?>
+        <?php $backUrl = uri(action: HomeController::class); ?>
         <a href="{{ $backUrl }}" class="back-button">
           <x-icon name="material-symbols:arrow-back" />
           投稿一覧に戻る
