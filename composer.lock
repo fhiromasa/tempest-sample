@@ -4803,20 +4803,24 @@
     "packages-dev": [
         {
             "name": "carthage-software/mago",
-            "version": "1.25.2",
+            "version": "1.47.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/carthage-software/mago.git",
-                "reference": "54e9645d15381aa78bf7113e01dcd1734ec43737"
+                "reference": "92ac16458f5c1ad26767b7aae5922a93fec129ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/carthage-software/mago/zipball/54e9645d15381aa78bf7113e01dcd1734ec43737",
-                "reference": "54e9645d15381aa78bf7113e01dcd1734ec43737",
+                "url": "https://api.github.com/repos/carthage-software/mago/zipball/92ac16458f5c1ad26767b7aae5922a93fec129ad",
+                "reference": "92ac16458f5c1ad26767b7aae5922a93fec129ad",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.1 || ~8.2 || ~8.3 || ~8.4 || ~8.5 || ~8.6"
+                "php": "~8.1 || ~8.2 || ~8.3 || ~8.4 || ~8.5 || ~8.6",
+                "revolt/event-loop": "^1.0.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^10.5"
             },
             "suggest": {
                 "ext-curl": "To show binary download progress"
@@ -4827,9 +4831,12 @@
             "type": "library",
             "autoload": {
                 "files": [
-                    "composer/functions.php",
-                    "composer/internal.php"
-                ]
+                    "composer/src/functions.php",
+                    "composer/src/internal.php"
+                ],
+                "psr-4": {
+                    "Mago\\": "composer/src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4837,7 +4844,7 @@
             ],
             "authors": [
                 {
-                    "name": "Saif Eddin Gmati",
+                    "name": "Seifeddine Gmati",
                     "email": "azjezz@carthage.software"
                 }
             ],
@@ -4847,7 +4854,7 @@
             ],
             "support": {
                 "issues": "https://github.com/carthage-software/mago/issues",
-                "source": "https://github.com/carthage-software/mago/tree/1.25.2"
+                "source": "https://github.com/carthage-software/mago/tree/1.47.1"
             },
             "funding": [
                 {
@@ -4855,7 +4862,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-05-02T23:21:31+00:00"
+            "time": "2026-08-18T15:28:43+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -5478,6 +5485,78 @@
                 }
             ],
             "time": "2025-12-06T08:01:15+00:00"
+        },
+        {
+            "name": "revolt/event-loop",
+            "version": "v1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/revoltphp/event-loop.git",
+                "reference": "44061cf513e53c6200372fc935ac42271566295d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/revoltphp/event-loop/zipball/44061cf513e53c6200372fc935ac42271566295d",
+                "reference": "44061cf513e53c6200372fc935ac42271566295d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "ext-json": "*",
+                "jetbrains/phpstorm-stubs": "^2019.3",
+                "phpunit/phpunit": "^9",
+                "psalm/phar": "6.16.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Revolt\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Piotrowski",
+                    "email": "aaron@trowski.com"
+                },
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                },
+                {
+                    "name": "Christian Lück",
+                    "email": "christian@clue.engineering"
+                },
+                {
+                    "name": "Niklas Keller",
+                    "email": "me@kelunik.com"
+                }
+            ],
+            "description": "Rock-solid event loop for concurrent PHP applications.",
+            "keywords": [
+                "async",
+                "asynchronous",
+                "concurrency",
+                "event",
+                "event-loop",
+                "non-blocking",
+                "scheduler"
+            ],
+            "support": {
+                "issues": "https://github.com/revoltphp/event-loop/issues",
+                "source": "https://github.com/revoltphp/event-loop/tree/v1.0.9"
+            },
+            "time": "2026-05-16T17:55:38+00:00"
         },
         {
             "name": "sebastian/cli-parser",
