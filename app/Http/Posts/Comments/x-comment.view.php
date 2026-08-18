@@ -19,15 +19,15 @@ $authorInitial = str($author->username)->substr(0, 1);
 
 ?>
 <div :class="'comment ' . $replyClass" :data-comment-id="$comment->id">
-    <div class="comment-header">
-        <div class="comment-avatar" :style="$avatarBackground">{{ $authorInitial }}</div>
-        <span class="comment-author">{{ $author->username }}</span>
-        <span class="comment-time">{{ $comment->created_at }}</span>
-    </div>
-    <p class="comment-body">{{ $comment->content }}</p>
-    <div class="comment-votes">
-        <x-icon name="material-symbols:arrow-shape-up" />
-        <span class="votes-count">{{ 0 }}</span>
-        ポイント
-    </div>
+  <div class="comment-header">
+    <div class="comment-avatar" :style="$avatarBackground">{{ $authorInitial }}</div>
+    <span class="comment-author">{{ $author->username }}</span>
+    <span class="comment-time">{{ $comment->created_at }}</span>
+  </div>
+  <p class="comment-body">{{ $comment->content }}</p>
+  <div class="comment-votes">
+    <x-icon name="material-symbols:arrow-shape-up" />
+    <span class="votes-count">{{ 0 }}</span>
+    ポイント
+  </div>
 </div>

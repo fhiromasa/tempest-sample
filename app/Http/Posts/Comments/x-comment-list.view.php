@@ -6,8 +6,8 @@ declare(strict_types=1);
 ?>
 
 <div id="comments-container" class="comments-container">
-    <x-comment :foreach="$comments as $comment" />
-    <div :forelse>
-        No Comments.
-    </div>
+  <x-comment :foreach="$comments as $comment" />
+  <div :forelse>
+    No Comments.
+  </div>
 </div>

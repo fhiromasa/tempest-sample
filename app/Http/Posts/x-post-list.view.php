@@ -6,8 +6,8 @@ declare(strict_types=1);
 ?>
 
 <div id="posts-container" class="posts-container">
-    <x-post-card :foreach="$posts as $post" />
-    <div :forelse>
-        Nothing here
-    </div>
+  <x-post-card :foreach="$posts as $post" />
+  <div :forelse>
+    Nothing here
+  </div>
 </div>

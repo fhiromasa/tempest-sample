@@ -10,22 +10,22 @@ declare(strict_types=1);
 <!doctype html>
 <html lang="ja" class="h-dvh flex flex-col scroll-smooth">
 <head>
-    <title>{{ $title ?? 'PostHub - 投稿とコメント' }}</title>
+  <title>{{ $title ?? 'PostHub - 投稿とコメント' }}</title>
 
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <x-slot name="head"/>
+  <x-slot name="head"/>
 
-    <x-vite-tags />
+  <x-vite-tags />
 </head>
 <body>
-    <div id="app">
-        <x-header/>
-        <x-slot/>
-        <x-footer/>
-    </div>
+  <div id="app">
+    <x-header/>
+    <x-slot/>
+    <x-footer/>
+  </div>
 
-    <x-slot name="scripts"/>
+  <x-slot name="scripts"/>
 </body>
 </html>
