@@ -7,7 +7,7 @@ namespace App\Models;
 use Tempest\Database\IsDatabaseModel;
 use Tempest\DateTime\DateTime;
 
-final class Comments
+final class Comment
 {
     use IsDatabaseModel;
 

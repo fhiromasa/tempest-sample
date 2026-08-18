@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/** @var \App\Models\Comments[] $comments */
+/** @var \App\Models\Comment[] $comments */
 ?>
 
 <div id="comments-container" class="comments-container">

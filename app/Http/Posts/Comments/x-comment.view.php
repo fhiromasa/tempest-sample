@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use App\Models\Comments;
+use App\Models\Comment;
 use App\Models\User;
 
 use function Tempest\Support\str;
 
 /**
- * @var Comments $comment
+ * @var Comment $comment
  */
 
 $replyClass = '';
