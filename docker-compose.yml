@@ -23,6 +23,17 @@ services:
       TZ: Asia/Tokyo
     entrypoint: ["php-fpm"]
 
+  vite-dev-server:
+    build:
+      context: ./docker/application
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/www/app
+    working_dir: /var/www/app
+    ports:
+      - 5173:5173
+    entrypoint: ["bun", "dev"]
+
   database:
     image: mysql:lts
     volumes:

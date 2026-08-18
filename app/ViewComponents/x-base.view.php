@@ -8,19 +8,24 @@ declare(strict_types=1);
 ?>
 
 <!doctype html>
-<html lang="en" class="h-dvh flex flex-col scroll-smooth">
+<html lang="ja" class="h-dvh flex flex-col scroll-smooth">
 <head>
-    <title>{{ $title ?? 'Tempest' }}</title>
+  <title>{{ $title ?? 'PostHub - 投稿とコメント' }}</title>
 
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <x-slot name="head"/>
+  <x-slot name="head"/>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <x-vite-tags />
 </head>
-<body class="flex flex-col h-full antialiased">
-<x-slot/>
-<x-slot name="scripts"/>
+<body>
+  <div id="app">
+    <x-header/>
+    <x-slot/>
+    <x-footer/>
+  </div>
+
+  <x-slot name="scripts"/>
 </body>
 </html>

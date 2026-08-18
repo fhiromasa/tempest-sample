@@ -19,5 +19,5 @@ if ($method instanceof Method) {
 ?>
 
 <form :action="$action" :method="$method" :enctype="$enctype">
-    <x-slot />
+  <x-slot />
 </form>

@@ -12,3 +12,6 @@ log/
 *.dev.config.php
 
 .DS_Store
+
+vite-tempest
+public/build/

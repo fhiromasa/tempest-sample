@@ -11,6 +11,7 @@ docker compose build
 
 # install dependencies
 docker compose run --rm --entrypoint "composer install" application
+docker compose run --rm --entrypoint "bun install" vite-dev-server
 
 # up (option `--build`)
 docker compose up -d
@@ -45,3 +46,14 @@ docker compose exec application composer lint
 # analyze
 docker compose exec application composer analyze
 ```
+
+# icons
+
+Tempest icons uses iconify.
+This project ues `material-symbols`.
+
+```
+<x-icon name="material-symbols:"/>
+```
+
+search icons https://icon-sets.iconify.design/material-symbols/
