@@ -27,8 +27,8 @@ indent_style = tab
 indent_style = space
 indent_size = 2
 
-# Matches the exact files either package.json or deno.json
-[{package.json,deno.json}]
+# Matches the exact file package.json
+[package.json]
 indent_style = space
 indent_size = 2
 
