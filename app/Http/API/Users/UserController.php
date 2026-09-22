@@ -92,7 +92,7 @@ final readonly class UserController
         try {
             $user = $this->userRepo->findById($id);
             if ($user === null) {
-                throw new \Exception('User not found');
+                throw new Exception('User not found');
             }
             return new Json($user->toArray());
         } catch (Exception $e) {

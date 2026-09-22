@@ -6,6 +6,7 @@ namespace App\Http\Posts\Comments;
 
 use App\Http\Posts\PostController;
 use App\Repositories\CommentRepository;
+use Exception;
 use Tempest\Http\Response;
 use Tempest\Http\Responses\Redirect;
 use Tempest\Http\Responses\ServerError;
@@ -33,7 +34,7 @@ final readonly class CommentController
                 user_id: $guestUserId,
                 content: $request->content,
             );
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->alert($e->getMessage());
             return new ServerError();
         }
