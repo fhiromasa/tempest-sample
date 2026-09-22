@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Models\User;
+use Exception;
 use SensitiveParameter;
 use Tempest\Database\PrimaryKey;
 use Tempest\DateTime\DateTime;
@@ -39,7 +40,7 @@ class UserRepository
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function update(
         string|int|PrimaryKey $id,
@@ -50,7 +51,7 @@ class UserRepository
     ): User {
         $user = User::findById($id);
         if ($user === null) {
-            throw new \Exception('User not found');
+            throw new Exception('User not found');
         }
 
         if ($username !== null) {
@@ -70,13 +71,13 @@ class UserRepository
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function delete(string|int|PrimaryKey $id): bool
     {
         $user = User::findById($id);
         if ($user === null) {
-            throw new \Exception('User not found');
+            throw new Exception('User not found');
         }
         $user->delete();
         return true;

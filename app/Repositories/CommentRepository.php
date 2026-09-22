@@ -31,7 +31,7 @@ class CommentRepository
      */
     public function findByPostId(int $post_id, Direction $direction = Direction::DESC): array
     {
-        /** @var array<array-key, \App\Models\Comment> */
+        /** @var array<array-key, Comment> */
         return Comment::select()
             ->where('post_id', $post_id)
             ->orderBy(field: 'created_at', direction: $direction)

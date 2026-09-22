@@ -18,6 +18,8 @@ return RectorConfig::configure()
         TempestSetList::TEMPEST_28,
         TempestSetList::TEMPEST_30,
         TempestSetList::TEMPEST_34,
+        TempestSetList::TEMPEST_310,
+        TempestSetList::TEMPEST_314,
     ])
     ->withTypeCoverageLevel(0)
     ->withDeadCodeLevel(0)

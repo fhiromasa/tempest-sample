@@ -7,6 +7,7 @@ namespace App\Http\Posts;
 use App\Http\Home\HomeController;
 use App\Repositories\CommentRepository;
 use App\Repositories\PostRepository;
+use Exception;
 use Tempest\Http\Request;
 use Tempest\Http\Response;
 use Tempest\Http\Responses\NotFound;
@@ -40,7 +41,7 @@ final readonly class PostController
                 title: $request->title,
                 content: $request->content,
             );
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->alert($e->getMessage());
             return new ServerError();
         }
