@@ -54,13 +54,16 @@ const deleteUser = async (id: number) => {
   const res = await fetch(`${endpoint}/${id}`, {
     method: "DELETE",
   });
+  console.log(res.status);
+  console.log(res.statusText);
   const data = await res.text();
+  console.log('expect empty string');
   console.log(data);
   return data;
 };
 
-createUser("test", "deno-test@example.com", "password");
+createUser("test", "e2e-test@example.com", "password");
 // getUsers();
 // getUser(9);
-// updateUser(9, "p");
+// updateUser(9, "test update user");
 // deleteUser(10);
