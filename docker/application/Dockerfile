@@ -1,7 +1,7 @@
 FROM php:8.5-fpm
 
 # Composer
-COPY --from=composer:2.9 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.10 /usr/bin/composer /usr/bin/composer
 # Bun
 COPY --from=oven/bun:1.3-debian /usr/local/bin/bun /usr/local/bin/bun
 
