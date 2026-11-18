@@ -8,7 +8,7 @@ use SensitiveParameter;
 use Tempest\Database\IsDatabaseModel;
 use Tempest\DateTime\DateTime;
 
-final class PasswordResets
+final class PasswordReset
 {
     use IsDatabaseModel;
 
